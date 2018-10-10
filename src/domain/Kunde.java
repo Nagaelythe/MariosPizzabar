@@ -1,12 +1,24 @@
 
 package domain;
 
+import java.util.List;
+
 /**
  *
- * @author martin
+ * @author martin bøgh
  */
 public class Kunde {
-    public Kunde(String name, int phone, List<Pizza> order){
-        
+    private String name;
+    private int phone;
+    private List<Pizza> order;
+
+    public Kunde(String name, int phone, List<Pizza> order) {
+        this.name = name;
+        this.phone = phone;
+        this.order = order;
     }
+    
+   
+    
+    
 }
