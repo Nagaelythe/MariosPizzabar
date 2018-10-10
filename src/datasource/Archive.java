@@ -140,7 +140,7 @@ public class Archive {
      */
     public void saveMenu(ArrayList<domain.Pizza> menu) {
         try {
-            FileOutputStream fileOut = new FileOutputStream(orderFile);
+            FileOutputStream fileOut = new FileOutputStream(menuFile);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
             objectOut.writeObject(menu);
 
