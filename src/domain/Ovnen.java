@@ -4,33 +4,48 @@
  * and open the template in the editor.
  */
 package domain;
+
 import java.util.ArrayList;
+
 /**
+ * This i s a class to handle the orders currently being proccessed, they are
+ * suposedly "In the oven" It takes inputs from the controller class, and sends
+ * its contents (orders) to be archived when they are flagged by the user as
+ * done.
  *
+ * 
+ * 
  * @author Martin Wulff
  */
-public class Ovnen{
-    
-    private ArrayList<Order> Ib;
-    
-    
-    
-    private void controll(){
+public class Ovnen {
+
+    private ArrayList<Order> Orders;
+
+    private void controll() { //Placeholder. skal nok fjernes da den sikkert bliver redundant.
         for (Order o : Ib) {
-            if(o.isDone()) Ib.remove(o);
+            if (o.isDone()) {
+                Orders.remove(o);
+            }
         }
     }
-    public void newOdrer(Order o){
-        Ib.add(o);
-        
+
+    public void newOdrer(Order o) {
+        Orders.add(o);
+
         controll();
     }
-    
-    public void completteOrder(Order o){   
-        if(!Ib.contains(o)) throw new IllegalArgumentException();
+
+    public void completeOrder(Order o) {
+        if (!Orders.contains(o)) {
+            throw new IllegalArgumentException();
+        }
         // Send order to archive,
-        Ib.remove(o);
-        
+        Orders.remove(o);
     }
-    
+
+
+    public ArrayList<Order> in() {
+        return Orders;
+    }
+
 }

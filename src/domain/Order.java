@@ -11,11 +11,11 @@ package domain;
  */
 public class Order {
     private Pizza pizza;
-    private Kunde kunde;
+    private Customer customer;
     private boolean afhentet = false;
 
     
-    public Order(Pizza pizza, Kunde kunde){
+    public Order(Pizza pizza,Customer customer){
         this.pizza = pizza;
         this.kunde = kunde;
         this.kunde.addPizzaToCustomer(pizza);
