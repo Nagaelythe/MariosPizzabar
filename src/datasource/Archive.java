@@ -1,13 +1,12 @@
 package datasource;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.io.*;
 
-import java.nio.charset.Charset;
 import java.nio.file.*;
+import java.util.List;
 
-/*
+/*readSmallTextToList
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -21,9 +20,15 @@ public class Archive {
     private final String FILENAME = "archive.bin";
     private final String orderArchive = "orderArchive.bin";
     private final String menuFileName = "menu.bin";
+    private final String menuPizzaFileName = System.getProperty("user.dir")
+            + "/src/datasource/pizzaMenu.csv";
     private final File orderFile = new File(orderArchive);
     private final File menuFile = new File(menuFileName);
     public boolean DEBUG = true; //true for debugging..
+
+    private List<String> pizzaList = null;  //menuPizza listen
+    private Path pizzaFile;                 //menuPizza sti. Skal bruges af 
+                                            //readSmallTextToList nederst
 
     /*
     Creates the archive to store orders, customers and 
@@ -179,6 +184,16 @@ public class Archive {
                 ex.printStackTrace();
             }
         }
+    }
+
+    public List<String> readSmallTextToList() {
+        try {
+            pizzaFile = Paths.get(menuPizzaFileName);
+            pizzaList = Files.readAllLines(pizzaFile);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return pizzaList;
     }
 
 }
