@@ -9,18 +9,28 @@ import java.util.ArrayList;
  *
  * @author Martin Wulff
  */
-public class Ovnen {
+public class Ovnen{
     
-    ArrayList<Odrer> Ib;
+    private ArrayList<Order> Ib;
     
     
     
-    public void controll(){
-        for (Odrer o : Ib) {
-            
-            if(o.isDone) Ib.remove(o);
-            
+    private void controll(){
+        for (Order o : Ib) {
+            if(o.isDone()) Ib.remove(o);
         }
+    }
+    public void newOdrer(Order o){
+        Ib.add(o);
+        
+        controll();
+    }
+    
+    public void completteOrder(Order o){   
+        if(!Ib.contains(o)) throw new IllegalArgumentException();
+        // Send order to archive,
+        Ib.remove(o);
+        
     }
     
 }

@@ -9,14 +9,16 @@ package domain;
  *
  * @author Martin Wulff
  */
-public class Odrer {
+public class Order {
     private Pizza pizza;
     private Kunde kunde;
     private boolean afhentet = false;
+
     
-    public Odrer(Pizza pizza, Kunde kunde){
+    public Order(Pizza pizza, Kunde kunde){
         this.pizza = pizza;
         this.kunde = kunde;
+        this.kunde.addPizzaToCustomer(pizza);
     }
     public void afhented(){
         this.afhentet = true;
@@ -25,4 +27,6 @@ public class Odrer {
     public boolean isDone(){
         return afhentet;
     }
+    
+    
 }
