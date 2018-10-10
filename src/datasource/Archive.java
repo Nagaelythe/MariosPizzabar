@@ -112,6 +112,7 @@ public class Archive {
         return obj;
     }
 
+    /*
     public void readNIO() {
         try {
             Charset cs = Charset.forName("UTF-8");
@@ -132,7 +133,7 @@ public class Archive {
         }
     }
 
-    /*
+    
     public Order findOrder(int orderNumber){
         
     }
@@ -141,6 +142,10 @@ public class Archive {
         try {
             FileOutputStream fileOut = new FileOutputStream(orderFile);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+            objectOut.writeObject(menu);
+
+            objectOut.flush();
+            objectOut.close();
 
         } catch (FileNotFoundException ex) {
             if (DEBUG) {
@@ -161,12 +166,19 @@ public class Archive {
         try {
             FileOutputStream fileOut = new FileOutputStream(menuFile);
             AppendObjectOutputStream pizzaOut = new AppendObjectOutputStream(fileOut);
-        } catch (FileNotFoundException ex ){
+            pizzaOut.writeObject(Pizza);
+            pizzaOut.flush();
+            pizzaOut.close();
 
-        } catch (IOException ex){
-            
+        } catch (FileNotFoundException ex) {
+            if (DEBUG) {
+                ex.printStackTrace();
+            }
+        } catch (IOException ex) {
+            if (DEBUG) {
+                ex.printStackTrace();
+            }
         }
-
     }
 
 }

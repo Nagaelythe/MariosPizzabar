@@ -26,4 +26,3 @@ class AppendObjectOutputStream extends ObjectOutputStream {
     }
 
 }
-
