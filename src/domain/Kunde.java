@@ -1,6 +1,14 @@
 
 package domain;
 
+import java.awt.Point;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 /**
@@ -32,16 +40,35 @@ public class Kunde {
     }
     
 
-    public void addCustomer(){
+    public void addPizzaToCustomer(){
         orders.add(pizza);
     }
     
-    public void showOrders(){
+    public void showRecentOrders(){
         System.out.println(name +"'s tidligere ordrer:");
         for (Pizza order : orders) {
             System.out.println(order);
         }  
     }
+    
+    public void showAllOrders(){
+        //Hent fil-indhold
+        
+        
+    }
+    
+    
+    public void saveToFile(){
+        //Hent fil-indhold
+        
+        //Læg nyt indhold til
+        
+        //Gem indhold
+        
+        
+    }
+    
+    
     
     @Override
     public String toString() {
