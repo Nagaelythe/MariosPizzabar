@@ -13,7 +13,7 @@ import java.util.List;
  */
 /**
  *
- * @author Niels Bang, Martin Bøgh
+ * @author Niels Bang
  */
 public class Archive {
 
