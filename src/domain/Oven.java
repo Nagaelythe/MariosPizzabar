@@ -8,8 +8,8 @@ package domain;
 import java.util.ArrayList;
 
 /**
- * This i s a class to handle the orders currently being proccessed, they are
- * suposedly "In the oven" It takes inputs from the controller class, and sends
+ * This i s a class to handle the orders currently being processed, they are
+ * supposedly "In the oven" It takes inputs from the controller class, and sends
  * its contents (orders) to be archived when they are flagged by the user as
  * done.
  *
@@ -17,12 +17,16 @@ import java.util.ArrayList;
  * 
  * @author Martin Wulff
  */
-public class Ovnen {
+public class Oven{
 
     private ArrayList<Order> Orders;
-
+    
+    public Oven(){
+        
+    }
+    
     private void controll() { //Placeholder. skal nok fjernes da den sikkert bliver redundant.
-        for (Order o : Ib) {
+        for (Order o : Orders) {
             if (o.isDone()) {
                 Orders.remove(o);
             }
