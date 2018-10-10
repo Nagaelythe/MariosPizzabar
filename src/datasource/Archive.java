@@ -44,8 +44,27 @@ public class Archive {
 
     }
 
-    public void printReciept(int number) {
+    public domain.Order getOrder(int number) {
+        ArrayList<domain.Order> allOrders = readArchive();
+        domain.Order reciept = null;
+        for (domain.Order o : allOrders) {
+            //   if (o.Customer.equals(customer)) {
+            reciept = o; //skal have et ordernummer
+            // }
+        }
+        return reciept;
+    }
 
+    public ArrayList<domain.Order> getOrder(domain.Customer customer) {
+        ArrayList<domain.Order> allOrders = readArchive();
+        ArrayList<domain.Order> orders = readArchive();
+        domain.Order reciept = null;
+        for (domain.Order o : allOrders) {
+            if (o.Customer.equals(customer)) {
+                orders.add(o);
+            }
+        }
+        return orders;
     }
 
     /*
@@ -60,21 +79,24 @@ public class Archive {
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
         } catch (FileNotFoundException ex) {
             System.out.println("No orderfile created.");
-            ex.printStackTrace();
+            if (DEBUG) {
+                ex.printStackTrace();
+            }
         } catch (IOException ex) {
-            ex.printStackTrace();
-
+            if (DEBUG) {
+                ex.printStackTrace();
+            }
         }
     }
 
-    public ArrayList<Object> readArchive() {
-        ArrayList<Object> obj = new ArrayList<>();
+    public ArrayList<domain.Order> readArchive() {
+        ArrayList<domain.Order> obj = new ArrayList<>();
         try {
             FileInputStream in = new FileInputStream(orderFile);
             ObjectInputStream sin = new ObjectInputStream(in);
             while (true) {
                 try {
-                    obj.add(sin.readObject());
+                    obj.add((domain.Order) sin.readObject());
                 } catch (EOFException ex) {
                     return obj;
                 }
@@ -83,12 +105,10 @@ public class Archive {
             if (DEBUG) {
                 ex.printStackTrace();
             }
-
         } catch (IOException | ClassNotFoundException ex) {
             if (DEBUG) {
                 ex.printStackTrace();
             }
-
         }
         return obj;
     }
@@ -103,20 +123,40 @@ public class Archive {
             }
         } catch (FileNotFoundException ex) {
             if (DEBUG) {
-                System.out.println("File not found.");
+                ex.printStackTrace();
             }
-
+            System.out.println("File not found.");
         } catch (IOException ex) {
             if (DEBUG) {
                 ex.printStackTrace();
             }
         }
     }
+
     /*
     public Order findOrder(int orderNumber){
         
     }
      */
+    public void saveMenu(ArrayList<domain.Pizza> menu) {
+        try {
+            FileOutputStream fileOut = new FileOutputStream(orderFile);
+            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+
+        } catch (FileNotFoundException ex) {
+            if (DEBUG) {
+                ex.printStackTrace();
+            }
+            System.out.println("File not found");
+        } catch (IOException ex) {
+            if (DEBUG) {
+                ex.printStackTrace();
+            }
+        } finally {
+
+        }
+
+    }
 
 }
 
