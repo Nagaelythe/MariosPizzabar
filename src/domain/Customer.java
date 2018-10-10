@@ -31,24 +31,18 @@ public class Customer {
     }
 
     public void showOrders() {
+        Archive arch = new Archive();
         System.out.println(name + "'s tidligere ordrer:");
-        for (Pizza order : customerOrders) {
+        for (Order order : arch.getOrder(this)) {
             System.out.println(order);
         }
     }
-
-    public void saveToFile() {
-        //Hent fil-indhold
-        Archive arch = new Archive();
-//        arch.
-
-        //Læg nyt indhold til
-        //Gem indhold
-    }
-
-    @Override
-    public String toString() {
+    
+        @Override
+        public String toString
+        
+            () {
         return "Kunde{" + "name=" + name + ", phone=" + phone + ", orders=" + customerOrders + '}';
-    }
+        }
 
-}
+    }
