@@ -17,8 +17,8 @@ public class Order {
     
     public Order(Pizza pizza,Customer customer){
         this.pizza = pizza;
-        this.kunde = kunde;
-        this.kunde.addPizzaToCustomer(pizza);
+        this.customer = customer;
+        this.customer.addPizzaToCustomer(pizza);
     }
     public void afhented(){
         this.afhentet = true;
