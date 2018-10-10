@@ -20,13 +20,17 @@ public class Archive {
 
     private final String FILENAME = "archive.bin";
     private final String orderArchive = "orderArchive.bin";
+    private final String menuFileName = "menu.bin";
     private final File orderFile = new File(orderArchive);
+    private final File menuFile = new File(menuFileName);
+    public boolean DEBUG = true; //true for debugging..
 
     /*
     Creates the archive to store orders, customers and 
     
      */
  /*
+    
     public void createNewArchive(String fileName) {
         try{
         FileOutputStream fileOut = new FileOutputStream(fileName);
@@ -36,6 +40,10 @@ public class Archive {
         
     }
      */
+    public void ArchiveTest() {
+
+    }
+
     public void printReciept(int number) {
 
     }
@@ -46,15 +54,21 @@ public class Archive {
         AppendObjectOutputStream objectAppend = new AppendObjectOutputStream();
     }
      */
-    public ArrayList<String> readArchive() {
-        ArrayList<String> read = new ArrayList<>();
+    public void addToArchive(domain.Order order) {
+        try {
+            FileOutputStream fileOut = new FileOutputStream(orderFile);
+            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+        } catch (FileNotFoundException ex) {
+            System.out.println("No orderfile created.");
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
 
-        return read;
+        }
     }
 
-    public ArrayList<Object> readOrders() {
+    public ArrayList<Object> readArchive() {
         ArrayList<Object> obj = new ArrayList<>();
-        Object a = null;
         try {
             FileInputStream in = new FileInputStream(orderFile);
             ObjectInputStream sin = new ObjectInputStream(in);
@@ -66,10 +80,14 @@ public class Archive {
                 }
             }
         } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
+            if (DEBUG) {
+                ex.printStackTrace();
+            }
 
         } catch (IOException | ClassNotFoundException ex) {
-            ex.printStackTrace();
+            if (DEBUG) {
+                ex.printStackTrace();
+            }
 
         }
         return obj;
@@ -84,9 +102,14 @@ public class Archive {
                 System.out.println(line);
             }
         } catch (FileNotFoundException ex) {
-            System.out.println("File not found.");
+            if (DEBUG) {
+                System.out.println("File not found.");
+            }
+
         } catch (IOException ex) {
-            ex.printStackTrace();
+            if (DEBUG) {
+                ex.printStackTrace();
+            }
         }
     }
     /*
