@@ -1,7 +1,7 @@
 
 package domain;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  *
@@ -10,15 +10,17 @@ import java.util.List;
 public class Kunde {
     private String name;
     private int phone;
-    private List<Pizza> order;
+    private ArrayList<Pizza> orders = new ArrayList<>();
+    private Pizza pizza;
 
-    public Kunde(String name, int phone, List<Pizza> order) {
+    public Kunde(String name, int phone, Pizza pizza) {
         this.name = name;
         this.phone = phone;
-        this.order = order;
+        this.pizza = pizza;
     }
     
-   
-    
-    
+
+    public void addCustomer(){
+        orders.add(pizza);
+    }
 }
