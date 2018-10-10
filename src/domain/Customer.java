@@ -1,20 +1,15 @@
 
 package domain;
 
-import java.awt.Point;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+
+import datasource.Archive;
 import java.util.ArrayList;
 
 /**
  *
  * @author martin bøgh
  */
+
 public class Customer {
     private String name;
     private int phone;
@@ -50,12 +45,13 @@ public class Customer {
             System.out.println(order);
         }  
     }
-   
-    public 
+    
     
     public void saveToFile(){
         //Hent fil-indhold
-        
+        Archive arch = new Archive();
+//        arch.
+                
         //Læg nyt indhold til
         
         //Gem indhold
