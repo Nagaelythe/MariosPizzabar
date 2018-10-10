@@ -26,9 +26,10 @@ public class Archive {
     private final File menuFile = new File(menuFileName);
     public boolean DEBUG = true; //true for debugging..
 
-    private List<String> pizzaList = null;  //menuPizza listen
+    private List<String> pizzaList = new ArrayList<>();  //menuPizza listen
     private Path pizzaFile;                 //menuPizza sti. Skal bruges af 
-                                            //readSmallTextToList nederst
+                                            //readPizzaCSVList nederst. Se også
+                                            //noter omkring List
 
     /*
     Creates the archive to store orders, customers and 
@@ -186,7 +187,12 @@ public class Archive {
         }
     }
 
-    public List<String> readSmallTextToList() {
+    public List<String> readPizzaCSVList() {
+        //Pizzalisten til menu består af navn og priserne på alm,
+        //deep pan og familie pizzaer
+        //En liste returneres, som man må splitte hvor den bruges.
+        //List-listen er det eneste readAllLines vil returnere.
+        
         try {
             pizzaFile = Paths.get(menuPizzaFileName);
             pizzaList = Files.readAllLines(pizzaFile);
