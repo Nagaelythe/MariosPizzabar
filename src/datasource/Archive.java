@@ -112,6 +112,7 @@ public class Archive {
         return obj;
     }
 
+    /*
     public void readNIO() {
         try {
             Charset cs = Charset.forName("UTF-8");
@@ -132,15 +133,19 @@ public class Archive {
         }
     }
 
-    /*
+    
     public Order findOrder(int orderNumber){
         
     }
      */
     public void saveMenu(ArrayList<domain.Pizza> menu) {
         try {
-            FileOutputStream fileOut = new FileOutputStream(orderFile);
+            FileOutputStream fileOut = new FileOutputStream(menuFile);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+            objectOut.writeObject(menu);
+
+            objectOut.flush();
+            objectOut.close();
 
         } catch (FileNotFoundException ex) {
             if (DEBUG) {
@@ -157,18 +162,23 @@ public class Archive {
 
     }
 
-}
+    public void addToMenu(domain.Pizza Pizza) {
+        try {
+            FileOutputStream fileOut = new FileOutputStream(menuFile);
+            AppendObjectOutputStream pizzaOut = new AppendObjectOutputStream(fileOut);
+            pizzaOut.writeObject(Pizza);
+            pizzaOut.flush();
+            pizzaOut.close();
 
-class AppendObjectOutputStream extends ObjectOutputStream {
-
-    public AppendObjectOutputStream(OutputStream out) throws IOException {
-        super(out);
-    }
-
-    @Override
-    protected void writeStreamHeader() throws IOException { //2tally not stolen from stackoverflow
-
-        reset();
+        } catch (FileNotFoundException ex) {
+            if (DEBUG) {
+                ex.printStackTrace();
+            }
+        } catch (IOException ex) {
+            if (DEBUG) {
+                ex.printStackTrace();
+            }
+        }
     }
 
 }
