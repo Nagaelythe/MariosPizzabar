@@ -57,10 +57,9 @@ public class Archive {
 
     public ArrayList<domain.Order> getOrder(domain.Customer customer) {
         ArrayList<domain.Order> allOrders = readArchive();
-        ArrayList<domain.Order> orders = readArchive();
-        domain.Order reciept = null;
+        ArrayList<domain.Order> orders = new ArrayList<>();
         for (domain.Order o : allOrders) {
-            if (o.Customer.equals(customer)) {
+            if (o.customer.equals(customer)) {
                 orders.add(o);
             }
         }

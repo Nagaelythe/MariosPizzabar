@@ -10,8 +10,8 @@ package domain;
  * @author Martin Wulff
  */
 public class Order {
-    private Pizza pizza;
-    private Customer customer;
+    Pizza pizza;
+    public final Customer customer;
     private boolean afhentet = false;
 
     
