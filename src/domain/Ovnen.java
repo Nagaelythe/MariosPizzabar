@@ -11,4 +11,7 @@ package domain;
  */
 public class Ovnen {
     
+    ArrayList<Odrer> Ib;
+    
+    
 }

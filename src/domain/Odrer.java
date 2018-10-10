@@ -9,6 +9,6 @@ package domain;
  *
  * @author Martin Wulff
  */
-public class Odre {
+public class Odrer {
     
 }
