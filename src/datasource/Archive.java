@@ -157,18 +157,16 @@ public class Archive {
 
     }
 
-}
+    public void addToMenu(domain.Pizza Pizza) {
+        try {
+            FileOutputStream fileOut = new FileOutputStream(menuFile);
+            AppendObjectOutputStream pizzaOut = new AppendObjectOutputStream(fileOut);
+        } catch (FileNotFoundException ex ){
 
-class AppendObjectOutputStream extends ObjectOutputStream {
+        } catch (IOException ex){
+            
+        }
 
-    public AppendObjectOutputStream(OutputStream out) throws IOException {
-        super(out);
-    }
-
-    @Override
-    protected void writeStreamHeader() throws IOException { //2tally not stolen from stackoverflow
-
-        reset();
     }
 
 }
