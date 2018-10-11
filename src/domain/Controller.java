@@ -5,6 +5,7 @@
  */
 package domain;
 
+import datasource.Archive;
 import java.util.ArrayList;
 import java.util.Scanner;
 import presentation.UI;
@@ -16,6 +17,14 @@ import presentation.UI;
 public class Controller {
 
     private OrderHandler oven = new OrderHandler();
+
+    public static void main(String[] args) {
+        new Controller().programMenu();
+    }
+
+  
+
+    private OrderHandler OH = new OrderHandler();
     private final Scanner SC = new Scanner(System.in); // skal nok fjernes.
     private UI ui = new UI();
 
@@ -42,13 +51,38 @@ public class Controller {
             Customer C = new Customer(ui.getName(), ui.getPhone());
             Order O = new Order(P, C);
             ui.confirmOrder(O);
-            oven.newOrder(O);
+            OH.newOrder(O);
         }
 
     }
 
     public void programMenu() {
-        
+        UI ui=new UI();
+        Archive arch = new Archive();
+        boolean stayin = true;
+        while (stayin) {
+            try {
+                switch (ui.SC.nextLine()) {
+
+                    case "1": {
+                        
+                        break;
+                    }
+                    case "2": {
+                        break;
+                    }
+                    case "3": {
+                        stayin = false;
+                        break;
+                    }
+                    default: {
+                        break;
+                    }
+                }
+            } catch (Exception ex) {
+                System.out.println("Indtast en rigtig værdi");
+            }
+        }
     }
 
 }

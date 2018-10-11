@@ -17,16 +17,23 @@ import java.util.List;
  */
 public class Archive {
 
-    private final String FILENAME = "archive.bin";
-    private final String orderArchive = "orderArchive.bin";
-    private final String menuFileName = "menu.bin";
+    private String workingDir = "";
+    private final String FILENAME = workingDir +"archive.bin";
+    private final String orderArchive = workingDir + "orderArchive.bin";
+    private final String menuFileName = workingDir + "menu.bin";
     private final String menuPizzaFileName = System.getProperty("user.dir")
-            + "/src/datasource/pizzaMenu.csv";
+          + "/src/datasource/pizzaMenu.csv";
+    private final String customerFileName = workingDir + "customerFileName";
+//    private final String menuPizzaFileName = workingDir +"pizzaMenu.csv";
     private final File orderFile = new File(orderArchive);
     private final File menuFile = new File(menuFileName);
+    private final File customerFile = new File(customerFileName);
     public boolean DEBUG = true; //true for debugging..
 
-    private List<String> pizzaList = new ArrayList<>();  //menuPizza listen
+    private List<String> pizzaList = new 
+        
+        
+        ArrayList<>();  //menuPizza listen
     private Path pizzaFile;                 //menuPizza sti. Skal bruges af 
                                             //readPizzaCSVList nederst. Se også
                                             //noter omkring List
@@ -50,8 +57,12 @@ public class Archive {
 
     }
 
+    public void setWorkingDir(String dir){
+        workingDir = dir;
+    }
+    
     public domain.Order getOrder(int number) {
-        ArrayList<domain.Order> allOrders = readArchive();
+        ArrayList<domain.Order> allOrders = readOrderArchive();
         domain.Order reciept = null;
         for (domain.Order o : allOrders) {
             //   if (o.Customer.equals(customer)) {
@@ -62,7 +73,7 @@ public class Archive {
     }
 
     public ArrayList<domain.Order> getOrder(domain.Customer customer) {
-        ArrayList<domain.Order> allOrders = readArchive();
+        ArrayList<domain.Order> allOrders = readOrderArchive();
         ArrayList<domain.Order> orders = new ArrayList<>();
         for (domain.Order o : allOrders) {
             if (o.customer.equals(customer)) {
@@ -72,13 +83,26 @@ public class Archive {
         return orders;
     }
 
-    /*
+    public domain.Customer getCustomer(domain.Customer customer) {
+    ArrayList<domain.Customer> allCustomers = readCustomerArchive();
+
+        for (domain.Customer c : allCustomers) {
+            if (c.equals(customer)) {
+                return c;
+            }
+        }
+    //    throw new UserNotFoundException();
+//        throw new Exception();
+    return null;
+    }
+
+/*
     public void addToArchive(){
         FileOutputStream out = new FileOutputStream()
         AppendObjectOutputStream objectAppend = new AppendObjectOutputStream();
     }
-     */
-    public void addToArchive(domain.Order order) {
+ */
+public void addOrderToArchive(domain.Order order) {
         try {
             FileOutputStream fileOut = new FileOutputStream(orderFile);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
@@ -94,7 +118,7 @@ public class Archive {
         }
     }
 
-    public ArrayList<domain.Order> readArchive() {
+    public ArrayList<domain.Order> readOrderArchive() {
         ArrayList<domain.Order> obj = new ArrayList<>();
         try {
             FileInputStream in = new FileInputStream(orderFile);
@@ -117,6 +141,31 @@ public class Archive {
         }
         return obj;
     }
+
+        public ArrayList<domain.Customer> readCustomerArchive() {
+        ArrayList<domain.Customer> obj = new ArrayList<>();
+        try {
+            FileInputStream in = new FileInputStream(customerFile);
+            ObjectInputStream sin = new ObjectInputStream(in);
+            while (true) {
+                try {
+                    obj.add((domain.Customer) sin.readObject());
+                } catch (EOFException ex) {
+                    return obj;
+                }
+            }
+        } catch (FileNotFoundException ex) {
+            if (DEBUG) {
+                ex.printStackTrace();
+            }
+        } catch (IOException | ClassNotFoundException ex) {
+            if (DEBUG) {
+                ex.printStackTrace();
+            }
+        }
+        return obj;
+    }
+
 
     /*
     public void readNIO() {
@@ -183,7 +232,9 @@ public class Archive {
         } catch (IOException ex) {
             if (DEBUG) {
                 ex.printStackTrace();
-            }
+            
+
+}
         }
     }
 
@@ -198,8 +249,9 @@ public class Archive {
             pizzaList = Files.readAllLines(pizzaFile);
         } catch (IOException ex) {
             ex.printStackTrace();
-        }
+        }        
         return pizzaList;
     }
 
 }
+
