@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.io.*;
 
 import java.nio.file.*;
-import java.util.List;
 
 /*readSmallTextToList
  * To change this license header, choose License Headers in Project Properties.
@@ -18,11 +17,11 @@ import java.util.List;
 public class Archive {
 
     private String workingDir = "";
-    private final String FILENAME = workingDir +"archive.bin";
+    private final String FILENAME = workingDir + "archive.bin";
     private final String orderArchive = workingDir + "orderArchive.bin";
     private final String menuFileName = workingDir + "menu.bin";
     private final String menuPizzaFileName = System.getProperty("user.dir")
-          + "/src/datasource/pizzaMenu.csv";
+            + "/src/datasource/pizzaMenu.csv";
     private final String customerFileName = workingDir + "customerFileName";
 //    private final String menuPizzaFileName = workingDir +"pizzaMenu.csv";
     private final File orderFile = new File(orderArchive);
@@ -30,13 +29,9 @@ public class Archive {
     private final File customerFile = new File(customerFileName);
     public boolean DEBUG = true; //true for debugging..
 
-    private List<String> pizzaList = new 
-        
-        
-        ArrayList<>();  //menuPizza listen
+    private ArrayList<String> pizzaArrayList = new ArrayList();                      //menuPizza listen
     private Path pizzaFile;                 //menuPizza sti. Skal bruges af 
-                                            //readPizzaCSVList nederst. Se også
-                                            //noter omkring List
+    //readPizzaCSVList nederst. 
 
     /*
     Creates the archive to store orders, customers and 
@@ -57,10 +52,10 @@ public class Archive {
 
     }
 
-    public void setWorkingDir(String dir){
+    public void setWorkingDir(String dir) {
         workingDir = dir;
     }
-    
+
     public domain.Order getOrder(int number) {
         ArrayList<domain.Order> allOrders = readOrderArchive();
         domain.Order reciept = null;
@@ -84,25 +79,25 @@ public class Archive {
     }
 
     public domain.Customer getCustomer(domain.Customer customer) {
-    ArrayList<domain.Customer> allCustomers = readCustomerArchive();
+        ArrayList<domain.Customer> allCustomers = readCustomerArchive();
 
         for (domain.Customer c : allCustomers) {
             if (c.equals(customer)) {
                 return c;
             }
         }
-    //    throw new UserNotFoundException();
+        //    throw new UserNotFoundException();
 //        throw new Exception();
-    return null;
+        return null;
     }
 
-/*
+    /*
     public void addToArchive(){
         FileOutputStream out = new FileOutputStream()
         AppendObjectOutputStream objectAppend = new AppendObjectOutputStream();
     }
- */
-public void addOrderToArchive(domain.Order order) {
+     */
+    public void addOrderToArchive(domain.Order order) {
         try {
             FileOutputStream fileOut = new FileOutputStream(orderFile);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
@@ -142,7 +137,7 @@ public void addOrderToArchive(domain.Order order) {
         return obj;
     }
 
-        public ArrayList<domain.Customer> readCustomerArchive() {
+    public ArrayList<domain.Customer> readCustomerArchive() {
         ArrayList<domain.Customer> obj = new ArrayList<>();
         try {
             FileInputStream in = new FileInputStream(customerFile);
@@ -232,26 +227,26 @@ public void addOrderToArchive(domain.Order order) {
         } catch (IOException ex) {
             if (DEBUG) {
                 ex.printStackTrace();
-            
 
-}
+            }
         }
     }
 
-    public List<String> readPizzaCSVList() {
+    public ArrayList<String> readPizzaCSVList() {
         //Pizzalisten til menu består af navn og priserne på alm,
         //deep pan og familie pizzaer
         //En liste returneres, som man må splitte hvor den bruges.
         //List-listen er det eneste readAllLines vil returnere.
-        
+
         try {
             pizzaFile = Paths.get(menuPizzaFileName);
-            pizzaList = Files.readAllLines(pizzaFile);
+            for (String string : Files.readAllLines(pizzaFile)) {
+                pizzaArrayList.add(string);
+            }
         } catch (IOException ex) {
             ex.printStackTrace();
-        }        
-        return pizzaList;
+        }
+        return pizzaArrayList;
     }
 
 }
-
