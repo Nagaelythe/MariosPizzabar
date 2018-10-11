@@ -33,7 +33,7 @@ public class Oven{
         }
     }
 
-    public void newOdrer(Order o) {
+    public void newOrder(Order o) {
         Orders.add(o);
 
         controll();

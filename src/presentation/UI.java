@@ -5,14 +5,19 @@
  */
 package presentation;
 
+import domain.Pizza;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
  *
  * @author Martin Wulff
  */
-public class UI{
-    
+public class UI {
+
     public final Scanner SC = new Scanner(System.in);
-    
+
+    /*
     public void displayPizzaMenu(ArrayList<Pizza> Menu){
         int Space = 30;
         String stars = StringUtils("*",32);
@@ -20,30 +25,54 @@ public class UI{
         
         //Building Menu:
         System.out.println(stars);
-        System.out.println('*'+StringUtils(" ", 10) );
+        System.out.println('*'+String.Utils(" ", 10) );
         
         
     }        
-            
-            
-    public int getMenuNavigation(int min, int max) {
+     */
+    public UI() {
+
+    }
+    public void orderMore(){
+        System.out.println("Bestiller kunden mere pizza? Y/N");
+    }
+    
+    public boolean confirmOrder(domain.Order O) {
+        System.out.println("Kunden har bestilt en: " + O);
+        System.out.println("Er det korrekt? Y/N");
+        return getYN();
+
+    }
+
+    public int getNumMinMax(int min, int max) {
         int num = 0;
         try {
             num = Integer.parseInt(SC.nextLine());
         } catch (NumberFormatException e) {
             System.out.println("Input skal være et heltal!");
-            getInput(min,max);
+            getNumMinMax(min, max);
         }
         if (num < min || num > max) {
             System.out.println("Indtast venligst et tal mellem " + min + " og " + max);
-            num = getInput(min, max);
+            num = getNumMinMax(min, max);
         }
         return num;
     }
-    
-    
-    
-    public int getPhoneNumber() {
+
+    public boolean getYN() {
+        
+        String input = SC.nextLine();
+
+        if (input.toLowerCase().startsWith("y")) {
+            return true;
+        } else if (input.toLowerCase().startsWith("n")) {
+            return false;
+        }
+        System.out.print("Input forkert, prøv igen Y/N: ");
+        return getYN();
+    }
+
+    public int getPhone() {
         System.out.println("Indtast kundens telefon nummer.");
         String in = SC.nextLine();
         int num = 0;
@@ -64,6 +93,5 @@ public class UI{
         System.out.println("Indtast navnet på kunden.");
         return SC.nextLine();
     }
-    
-    
+
 }
