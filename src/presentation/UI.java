@@ -33,15 +33,15 @@ public class UI {
     public UI() {
 
     }
-    
-    public void orderMore(){
+
+    public void orderMore() {
         System.out.println("Bestiller kunden mere pizza? Y/N");
     }
-    
-    public void dispPTM(PizzasToMake PTM){
+
+    public void dispPTM(PizzasToMake PTM) {
         System.out.println(PTM);
     }
-    
+
     public boolean confirmOrder(domain.Order O) {
         System.out.println("Kunden har bestilt en: " + O);
         System.out.println("Er det korrekt? Y/N");
@@ -65,7 +65,7 @@ public class UI {
     }
 
     public boolean getYN() {
-        
+
         String input = SC.nextLine();
 
         if (input.toLowerCase().startsWith("y")) {
@@ -98,14 +98,14 @@ public class UI {
         System.out.println("Indtast navnet på kunden.");
         return SC.nextLine();
     }
-    
-    public void getMenu(){
+
+    public void getMenu() {
         stars();
-        System.out.println("1. Vis menu\n2. Vis bestillinger\n3. Opret ordre\n4. Fjern ordre\n5. Quit");
-        
+        System.out.println("1. Vis menu\n2. Vis bestillinger\n3. Opret ordre\n"
+                + "4. Fjern ordre\n5. Quit");
     }
-    
-      public void stars() {
+
+    public void stars() {
         System.out.println("***************");
     }
 

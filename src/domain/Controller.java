@@ -120,11 +120,12 @@ public class Controller {
     
     public void showPTM(){
         ui.dispPTM(PTM);
-        System.out.println("1: fjern pizza fra arbejds liste. \n2: tilbage til hovedmenuen.");
+        
         if(PTM.noPTM()){
             System.out.println("Ingen pizzaer mangler at blive lavet.");
             return;
         }
+        System.out.println("1: fjern pizza fra arbejds liste. \n2: tilbage til hovedmenuen.");
         switch(ui.getNumMinMax(1, 2)){
             case 1:
                     PTM.pizzaComplete(ui.getNumMinMax(1, 10));
