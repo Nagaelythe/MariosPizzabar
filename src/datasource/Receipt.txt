@@ -7,9 +7,9 @@
 Kunde:  John Testperson      tlf 12345678
 Du blev betjent af xxxx 
 
-Pizza 1, Magheritta        0 dkk 
-Pizza 12, Torino        0 dkk 
-Pizza 2, Vesuvio        0 dkk 
+Pizza nr. 1, Magheritta        0 dkk 
+Pizza nr. 12, Torino        0 dkk 
+Pizza nr. 2, Vesuvio        0 dkk 
 Total: 0
 
  Marios Pizzabar 

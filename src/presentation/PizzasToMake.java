@@ -38,7 +38,7 @@ public class PizzasToMake {
     public String toString(){
         String out = "";
         for (int i = 0; i < PTM.size(); i++) {
-            out+= (i+1)  +  PTM.get(i).toString() + " Bestilt kl: " + Time.get(i).getHour()+"" +Time.get(i).getMinute()+". \n";
+            out+= "Bestilling nr" + (i+1)  +": "+  PTM.get(i).toString() + " Bestilt kl: " + Time.get(i).getHour()+":" +Time.get(i).getMinute()+". \n";
         }
         return out;
     }

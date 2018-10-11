@@ -47,6 +47,7 @@ public class Controller {
         ui.orderMore();
         if (ui.getYN()) {
             ArrayList<Pizza> Pz = new ArrayList<>();
+            Pz.add(P);
             System.out.println("Input pizza nr");
             P = new Pizza(ui.getNumMinMax(0, 15));
             Pz.add(P);
