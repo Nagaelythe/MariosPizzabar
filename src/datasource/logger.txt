@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 java.lang.NumberFormatException: For input string: ""
 	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
 	at java.lang.Integer.parseInt(Integer.java:592)
@@ -332,6 +333,8 @@ java.lang.NumberFormatException: For input string: "fg"
 >>>>>>> 9c34072eab18d8ac4aab8127c4978180b6eb0434
 	at domain.Controller.main(Controller.java:24)
 
+=======
+>>>>>>> 237eed13d15cec219905cc09b754be5457f399ea
 =======
 >>>>>>> 237eed13d15cec219905cc09b754be5457f399ea
 
