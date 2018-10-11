@@ -51,10 +51,8 @@ public class Customer {
     }
     
         @Override
-        public String toString
-        
-            () {
-        return "Kunde{" + "name=" + name + ", phone=" + phone + ", orders=" + customerOrders + '}';
+        public String toString() {
+        return "Kunde{" + "name=" + name + ", phone=" + phone  + '}';
         }
 
     }

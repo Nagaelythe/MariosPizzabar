@@ -53,15 +53,17 @@ public class Controller {
             }
             Customer C = new Customer(ui.getName(), ui.getPhone());
             O = new Order(Pz, C);
-            PTM.addPizzas(Pz, LocalDateTime.now());
-            OH.newOrder(O);
-
+            if (ui.confirmOrder(O)) {
+                PTM.addPizzas(Pz, LocalDateTime.now());
+                OH.newOrder(O);
+            }
         } else {
             Customer C = new Customer(ui.getName(), ui.getPhone());
             O = new Order(P, C);
-            ui.confirmOrder(O);
-            PTM.addPizzas(P, LocalDateTime.now());
-            OH.newOrder(O);
+            if (ui.confirmOrder(O)) {
+                PTM.addPizzas(P, LocalDateTime.now());
+                OH.newOrder(O);
+            }
         }
         new datasource.Receipt(O);
 
@@ -88,7 +90,7 @@ public class Controller {
                     break;
                 }
                 case 4: {
-                    stayin = false;
+                    completeOrder();
                     break;
                 }
                 case 5:
@@ -137,6 +139,10 @@ public class Controller {
 
     public void completeOrder() {
         System.out.println(OH);
+        System.out.println("Hvilken bestilling bliver afhentet? tryk 0 at komme tilbage.");
+        int input = ui.getNumMinMax(1, OH.size());
+        if(input != 0) OH.completeOrder(input);
+       
     }
 
 }
