@@ -19,7 +19,7 @@ import presentation.UI;
  */
 public class Controller {
 
-    private OrderHandler oven = new OrderHandler();
+    
 
     public static void main(String[] args) {
         new Controller().programMenu();        
@@ -29,12 +29,15 @@ public class Controller {
     private final Scanner SC = new Scanner(System.in); // skal nok fjernes.
     private UI ui = new UI();
     private PizzasToMake PTM = new PizzasToMake();
+    private OrderHandler oven = new OrderHandler();
+    private  Archive arch = new Archive();
+    private int P = arch.getPizzaNames().size();  // amount of different pizzas offered.
 
     public void CreateOrder() {
         //Get UI Element from here.
         ui.newPizz();
         Order O = null;
-        Pizza P = new Pizza(ui.getNumMinMax(0, 15),ui.getNumMinMax(1, 3));  // evt implementer UI metoder til at få et ID og et navn, eller lav en Json string til det her?
+        Pizza P = new Pizza(ui.getNumMinMax(0, this.P-1),ui.getNumMinMax(1, 3));  // evt implementer UI metoder til at få et ID og et navn, eller lav en Json string til det her?
 
         //Creating more pizzas:
         ui.orderMore();
@@ -42,12 +45,12 @@ public class Controller {
             ArrayList<Pizza> Pz = new ArrayList<>();
             Pz.add(P);
             ui.newPizz();
-            P = new Pizza(ui.getNumMinMax(0, 15),ui.getNumMinMax(1, 3));
+            P = new Pizza(ui.getNumMinMax(0, this.P-1),ui.getNumMinMax(1, 3));
             Pz.add(P);
             ui.orderMore();
             while (ui.getYN()) {
                 ui.newPizz();
-                P = new Pizza(ui.getNumMinMax(0, 15),ui.getNumMinMax(1, 3));
+                P = new Pizza(ui.getNumMinMax(0, this.P-1),ui.getNumMinMax(1, 3));
                 Pz.add(P);
                 ui.orderMore();
             }
@@ -71,7 +74,7 @@ public class Controller {
 
     public void programMenu() {
         UI ui = new UI();
-        Archive arch = new Archive();
+       
         boolean stayin = true;
         while (stayin) {
             ui.getMenu();
