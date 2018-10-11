@@ -2,7 +2,8 @@ package domain;
 
 /*
 * Customer samler navn og telefonnummer sammen med en samlet list af ordrer fra
-* denne kunde. Man kan add'e pizza-typer den denne liste eksternt
+* denne kunde.
+* Man kan eksternt add'e pizza-typer til denne liste 
 */
 
 import datasource.Archive;
