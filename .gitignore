@@ -38,3 +38,4 @@ nbdist/
 # End of https://www.gitignore.io/api/java,netbeans
 src/datasource/Receipt.txt
 *.txt
+*.txt

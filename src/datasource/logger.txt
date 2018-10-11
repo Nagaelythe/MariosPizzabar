@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 java.lang.NumberFormatException: For input string: ""
 	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
 	at java.lang.Integer.parseInt(Integer.java:592)
@@ -170,10 +171,14 @@ java.lang.NumberFormatException: For input string: ""
 	at domain.Controller.main(Controller.java:24)
 
 java.lang.NumberFormatException: For input string: "�"
+=======
+java.lang.NumberFormatException: For input string: "rwr"
+>>>>>>> 9c34072eab18d8ac4aab8127c4978180b6eb0434
 	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
 	at java.lang.Integer.parseInt(Integer.java:580)
 	at java.lang.Integer.parseInt(Integer.java:615)
 	at presentation.UI.getNumMinMax(UI.java:58)
+<<<<<<< HEAD
 	at presentation.UI.getNumMinMax(UI.java:69)
 	at presentation.UI.getNumMinMax(UI.java:69)
 	at presentation.UI.getNumMinMax(UI.java:69)
@@ -220,6 +225,26 @@ java.lang.NumberFormatException: For input string: ""
 	at presentation.UI.getNumMinMax(UI.java:69)
 	at domain.Controller.completeOrder(Controller.java:139)
 	at domain.Controller.programMenu(Controller.java:92)
+=======
+	at presentation.UI.getNumMinMax(UI.java:65)
+	at domain.Controller.programMenu(Controller.java:78)
+	at domain.Controller.main(Controller.java:24)
+
+java.lang.NumberFormatException: For input string: "dfgdf"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at presentation.UI.getNumMinMax(UI.java:58)
+	at domain.Controller.programMenu(Controller.java:78)
+	at domain.Controller.main(Controller.java:24)
+
+java.lang.NumberFormatException: For input string: "fg"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at presentation.UI.getNumMinMax(UI.java:58)
+	at domain.Controller.programMenu(Controller.java:78)
+>>>>>>> 9c34072eab18d8ac4aab8127c4978180b6eb0434
 	at domain.Controller.main(Controller.java:24)
 
 
