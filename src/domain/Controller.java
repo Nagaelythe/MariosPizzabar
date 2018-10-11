@@ -87,10 +87,10 @@ public class Controller {
                         break;
                     }
                     default: {
-                        break;
+                        throw new IllegalArgumentException();
                     }
                 }
-            } catch (Exception ex) {
+            } catch (IllegalArgumentException ex) {
                 System.out.println("Indtast en rigtig værdi");
             }
         }
