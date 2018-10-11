@@ -25,7 +25,7 @@ public class Pizza {
     }
     //overload
     public Pizza(int Number){
-        this.number = number;
+        this.number = Number;
         // Find pizzaen ud fra menuen.
     }
     
@@ -45,7 +45,7 @@ public class Pizza {
 
     @Override
     public String toString() {
-        return "Pizza " + number + ", " + name + "        " + price + " dkk ";
+        return "Pizza nr. " + number + ", " + name + "        " + price + " dkk ";
     }
     
     public int getPrice(){

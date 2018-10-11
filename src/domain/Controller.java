@@ -22,17 +22,14 @@ public class Controller {
 
     public static void main(String[] args) {
         new Controller().programMenu();
-        new datasource.Receipt().drawArt();
-        
-        /* Receipt test
+
+        // Receipt test
         ArrayList<Pizza> pizzas = new ArrayList<>();
         pizzas.add(new Pizza(1, "Magheritta"));
         pizzas.add(new Pizza(12, "Torino"));
         pizzas.add(new Pizza(2, "Vesuvio"));
         new datasource.Receipt(new Order(pizzas, new Customer("John Testperson", 12345678)));
-       */
-        
-        
+
     }
 
     private OrderHandler OH = new OrderHandler();
@@ -43,7 +40,7 @@ public class Controller {
     public void CreateOrder() {
         //Get UI Element from here.
         System.out.println("Indtast nr på den bestilte pizza: ");
-              
+
         Pizza P = new Pizza(ui.getNumMinMax(0, 15));  // evt implementer UI metoder til at få et ID og et navn, eller lav en Json string til det her?
 
         //Creating more pizzas:
@@ -103,6 +100,7 @@ public class Controller {
                         break;
                     }
                     case "4": {
+                        break;
                     }
                     case "5": {
                         stayin = false;
@@ -117,27 +115,24 @@ public class Controller {
             }
         }
     }
-    
-    public void showPTM(){
+
+    public void showPTM() {
         ui.dispPTM(PTM);
-        
-        if(PTM.noPTM()){
+
+        if (PTM.noPTM()) {
             System.out.println("Ingen pizzaer mangler at blive lavet.");
             return;
         }
         System.out.println("1: fjern pizza fra arbejds liste. \n2: tilbage til hovedmenuen.");
-        switch(ui.getNumMinMax(1, 2)){
+        switch (ui.getNumMinMax(1, 2)) {
             case 1:
-                    PTM.pizzaComplete(ui.getNumMinMax(1, 10));
-                    showPTM();
-                    break;
+                PTM.pizzaComplete(ui.getNumMinMax(1, 10));
+                showPTM();
+                break;
             case 2:
-                    return;
-            }
-        
-        
+                return;
+        }
+
     }
-    
-    
-    
+
 }
