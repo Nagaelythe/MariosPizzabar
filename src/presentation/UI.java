@@ -38,6 +38,10 @@ public class UI {
         System.out.println("Bestiller kunden mere pizza? Y/N");
     }
     
+    public void dispPTM(PizzasToMake PTM){
+        System.out.println(PTM);
+    }
+    
     public boolean confirmOrder(domain.Order O) {
         System.out.println("Kunden har bestilt en: " + O);
         System.out.println("Er det korrekt? Y/N");
