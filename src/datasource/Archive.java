@@ -112,11 +112,15 @@ public class Archive {
         return pizzaArrayList;
     }
 
-    public void writeWithNio(String errorString) {
+    public void writeLogger(String errorString) {
         try {
             Path path = Paths.get(logger);
-            String[] arr = new String[]{errorString};
-            List<String> list = Arrays.asList(arr);
+            ArrayList<String> arr = new ArrayList<String>();
+            List<String> list = new ArrayList<String>();
+            list.add(errorString);
+            for (String str : Files.readAllLines(path)) {
+                list.add(str);
+            }
             Files.write(path, list);
         } catch (IOException ex) {
             if (DEBUG) {
