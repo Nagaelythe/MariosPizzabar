@@ -7,7 +7,7 @@
 Kunde:  JOGN AEWAWEAWEAWE      tlf 12345678
 Du blev betjent af xxxx 
 
-<<<<<<< HEAD
+
 Pizza nr. 2, null        0 dkk 
 Pizza nr. 4, null        0 dkk 
 Pizza nr. 15, null        0 dkk 
@@ -17,7 +17,7 @@ Pizza nr. 14, null        0 dkk
 Pizza nr. 1, Magheritta        0 dkk 
 Pizza nr. 12, Torino        0 dkk 
 Pizza nr. 2, Vesuvio        0 dkk 
->>>>>>> 83dbc996cf7572597bef3cf7556b574083c5bf95
+
 Total: 0
 
  Marios Pizzabar 
