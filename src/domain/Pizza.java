@@ -45,7 +45,7 @@ public class Pizza {
 
     @Override
     public String toString() {
-        return "Pizza " + number + ", " + name + "        " + price + " dkk ";
+        return "Pizza nr. " + number + ", " + name + "        " + price + " dkk ";
     }
     
     public int getPrice(){
