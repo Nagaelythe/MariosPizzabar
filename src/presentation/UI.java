@@ -5,8 +5,7 @@
  */
 package presentation;
 
-import domain.Pizza;
-import java.util.ArrayList;
+import datasource.Archive;
 import java.util.Scanner;
 
 /**
@@ -50,11 +49,14 @@ public class UI {
     }
 
     public int getNumMinMax(int min, int max) {
+        Archive archive = new Archive();
+
         int num = 0;
         try {
             num = Integer.parseInt(SC.nextLine());
         } catch (NumberFormatException e) {
             System.out.println("Input skal være et heltal!");
+            archive.writeWithNio(e.getMessage());
             getNumMinMax(min, max);
         }
         if (num < min || num > max) {
