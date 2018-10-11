@@ -29,7 +29,6 @@ public class Archive {
     private final File customerFile = new File(customerFileName);
     public boolean DEBUG = true; //true for debugging..
 
-    private List<String> pizzaList = new ArrayList<>();  //menuPizza listen
     private ArrayList<String> pizzaArrayList = new ArrayList();                      //menuPizza listen
     private Path pizzaFile;                 //menuPizza sti. Skal bruges af 
     //readPizzaCSVList nederst. 

@@ -12,7 +12,6 @@ Pizza 12, Torino        0 dkk
 Pizza 2, Vesuvio        0 dkk 
 Total: 0
 
-
  Marios Pizzabar 
  Lyngby Hovedgade x 
  2800 Kongens Lyngby 
