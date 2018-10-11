@@ -24,16 +24,6 @@ public class Controller {
         new Controller().programMenu();
         
         
-        // Receipt test
-        ArrayList<Pizza> pizzas = new ArrayList<>();
-        pizzas.add(new Pizza(1, "Magheritta"));
-        pizzas.add(new Pizza(12, "Torino"));
-        pizzas.add(new Pizza(2, "Vesuvio"));
-        new datasource.Receipt(new Order(pizzas, new Customer("John Testperson", 12345678)));
-       
-               
-        
-        
     }
 
     private OrderHandler OH = new OrderHandler();
@@ -44,7 +34,7 @@ public class Controller {
     public void CreateOrder() {
         //Get UI Element from here.
         System.out.println("Indtast nr på den bestilte pizza: ");
-              
+        Order O = null;
         Pizza P = new Pizza(ui.getNumMinMax(0, 15));  // evt implementer UI metoder til at få et ID og et navn, eller lav en Json string til det her?
 
         //Creating more pizzas:
@@ -62,17 +52,20 @@ public class Controller {
                 ui.orderMore();
             }
             Customer C = new Customer(ui.getName(), ui.getPhone());
-            Order O = new Order(Pz, C);
+            O = new Order(Pz, C);
             PTM.addPizzas(Pz, LocalDateTime.now());
             OH.newOrder(O);
 
         } else {
             Customer C = new Customer(ui.getName(), ui.getPhone());
-            Order O = new Order(P, C);
+            O = new Order(P, C);
             ui.confirmOrder(O);
             PTM.addPizzas(P, LocalDateTime.now());
             OH.newOrder(O);
         }
+        new datasource.Receipt(O);
+        
+        
     }
 
     public void programMenu() {
