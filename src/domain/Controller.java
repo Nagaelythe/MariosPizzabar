@@ -101,9 +101,6 @@ public class Controller {
                         break;
                     }
                     case "4": {
-                        break;
-                    }
-                    case "5": {
                         stayin = false;
                         break;
                     }
