@@ -19,7 +19,7 @@ import java.util.ArrayList;
  */
 public class OrderHandler{
 
-    private ArrayList<Order> Orders;
+    private ArrayList<Order> Orders = new ArrayList<>();
     
     public OrderHandler(){
         

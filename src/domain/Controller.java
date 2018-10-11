@@ -6,8 +6,10 @@
 package domain;
 
 import datasource.Archive;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
+import presentation.PizzasToMake;
 import presentation.UI;
 
 /**
@@ -31,11 +33,10 @@ public class Controller {
         
     }
 
-  
-
     private OrderHandler OH = new OrderHandler();
     private final Scanner SC = new Scanner(System.in); // skal nok fjernes.
     private UI ui = new UI();
+    private PizzasToMake PTM = new PizzasToMake();
 
     public void CreateOrder() {
         //Get UI Element from here.
@@ -45,53 +46,87 @@ public class Controller {
         ui.orderMore();
         if (ui.getYN()) {
             ArrayList<Pizza> Pz = new ArrayList<>();
+            System.out.println("Input pizza nr");
             P = new Pizza(ui.getNumMinMax(0, 15));
             Pz.add(P);
             ui.orderMore();
             while (ui.getYN()) {
+                System.out.println("Input pizza nr");
                 P = new Pizza(ui.getNumMinMax(0, 15));
                 Pz.add(P);
                 ui.orderMore();
             }
             Customer C = new Customer(ui.getName(), ui.getPhone());
             Order O = new Order(Pz, C);
+            PTM.addPizzas(Pz, LocalDateTime.now());
+            OH.newOrder(O);
 
         } else {
             Customer C = new Customer(ui.getName(), ui.getPhone());
             Order O = new Order(P, C);
             ui.confirmOrder(O);
+            PTM.addPizzas(P, LocalDateTime.now());
             OH.newOrder(O);
         }
-
     }
 
     public void programMenu() {
-        UI ui=new UI();
+        UI ui = new UI();
         Archive arch = new Archive();
         boolean stayin = true;
         while (stayin) {
+            ui.getMenu();
             try {
                 switch (ui.SC.nextLine()) {
 
                     case "1": {
-                        
+                        int index = 1;
+                        for (String string : arch.readPizzaCSVList()) {
+                            String[] pizzaDetaljer = string.split(",");
+                            System.out.println(index + ". " + pizzaDetaljer[0] + ", Alm: " + pizzaDetaljer[1]
+                                    + "kr, Deep pan: " + pizzaDetaljer[2] + "kr, Familie: "
+                                    + pizzaDetaljer[3] + "kr");
+                            index++;
+                        }
                         break;
                     }
                     case "2": {
+                        showPTM();
                         break;
                     }
                     case "3": {
+                        CreateOrder();
+                    }
+                    case "4": {
+                    }
+                    case "5": {
                         stayin = false;
                         break;
                     }
                     default: {
-                        break;
+                        throw new IllegalArgumentException();
                     }
                 }
-            } catch (Exception ex) {
+            } catch (IllegalArgumentException ex) {
                 System.out.println("Indtast en rigtig værdi");
             }
         }
     }
-
+    
+    public void showPTM(){
+        ui.dispPTM(PTM);
+        switch(ui.getNumMinMax(1, 2)){
+            case 1:
+                    PTM.pizzaComplete(ui.getNumMinMax(1, 10));
+                    showPTM();
+                    break;
+            case 2:
+                    return;
+            }
+        
+        
+    }
+    
+    
+    
 }

@@ -38,6 +38,10 @@ public class UI {
         System.out.println("Bestiller kunden mere pizza? Y/N");
     }
     
+    public void dispPTM(PizzasToMake PTM){
+        System.out.println(PTM);
+    }
+    
     public boolean confirmOrder(domain.Order O) {
         System.out.println("Kunden har bestilt en: " + O);
         System.out.println("Er det korrekt? Y/N");
@@ -93,6 +97,16 @@ public class UI {
     public String getName() {
         System.out.println("Indtast navnet på kunden.");
         return SC.nextLine();
+    }
+    
+    public void getMenu(){
+        stars();
+        System.out.println("1. Vis menu\n2. Vis bestillinger\n3. Opret ordre\n4. Fjern ordre\n5. Quit");
+        
+    }
+    
+      public void stars() {
+        System.out.println("***************");
     }
 
 }

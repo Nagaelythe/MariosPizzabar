@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.io.*;
 
 import java.nio.file.*;
-import java.util.List;
 
 /*readSmallTextToList
  * To change this license header, choose License Headers in Project Properties.
@@ -31,9 +30,9 @@ public class Archive {
     public boolean DEBUG = true; //true for debugging..
 
     private List<String> pizzaList = new ArrayList<>();  //menuPizza listen
+    private ArrayList<String> pizzaArrayList = new ArrayList();                      //menuPizza listen
     private Path pizzaFile;                 //menuPizza sti. Skal bruges af 
-    //readPizzaCSVList nederst. Se også
-    //noter omkring List
+    //readPizzaCSVList nederst. 
 
     /*
     Creates the archive to store orders, customers and 
@@ -190,10 +189,10 @@ public class Archive {
         
     }
      */
-    public void archiveMenu(ArrayList<domain.Pizza> menu) { 
+    public void archiveMenu(ArrayList<domain.Pizza> menu) {
         /*
         Saves the menu as a binary file
-        */
+         */
         try {
             FileOutputStream fileOut = new FileOutputStream(menuFile);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
@@ -232,24 +231,28 @@ public class Archive {
             }
         } catch (IOException ex) {
             if (DEBUG) {
+<<<<<<< HEAD
                 ex.printStackTrace();           
 }
         }
     }
      */
-    public List<String> readPizzaCSVList() {
+    public ArrayList<String> readPizzaCSVList() {
+
         //Pizzalisten til menu består af navn og priserne på alm,
         //deep pan og familie pizzaer
         //En liste returneres, som man må splitte hvor den bruges.
         //List-listen er det eneste readAllLines vil returnere.
-
         try {
             pizzaFile = Paths.get(menuPizzaFileName);
-            pizzaList = Files.readAllLines(pizzaFile);
+            for (String string : Files.readAllLines(pizzaFile)) {
+                pizzaArrayList.add(string);
+            }
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        return pizzaList;
+        return pizzaArrayList;
+
     }
 
 }
