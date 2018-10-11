@@ -22,8 +22,7 @@ public class Controller {
 
     public static void main(String[] args) {
         new Controller().programMenu();
-        
-        
+
     }
 
     private OrderHandler OH = new OrderHandler();
@@ -41,6 +40,7 @@ public class Controller {
         ui.orderMore();
         if (ui.getYN()) {
             ArrayList<Pizza> Pz = new ArrayList<>();
+            Pz.add(P);
             System.out.println("Input pizza nr");
             P = new Pizza(ui.getNumMinMax(0, 15));
             Pz.add(P);
@@ -97,8 +97,6 @@ public class Controller {
                         break;
                     }
                     case "4": {
-                    }
-                    case "5": {
                         stayin = false;
                         break;
                     }
@@ -111,27 +109,24 @@ public class Controller {
             }
         }
     }
-    
-    public void showPTM(){
+
+    public void showPTM() {
         ui.dispPTM(PTM);
-        
-        if(PTM.noPTM()){
+
+        if (PTM.noPTM()) {
             System.out.println("Ingen pizzaer mangler at blive lavet.");
             return;
         }
         System.out.println("1: fjern pizza fra arbejds liste. \n2: tilbage til hovedmenuen.");
-        switch(ui.getNumMinMax(1, 2)){
+        switch (ui.getNumMinMax(1, 2)) {
             case 1:
-                    PTM.pizzaComplete(ui.getNumMinMax(1, 10));
-                    showPTM();
-                    break;
+                PTM.pizzaComplete(ui.getNumMinMax(1, 10));
+                showPTM();
+                break;
             case 2:
-                    return;
-            }
-        
-        
+                return;
+        }
+
     }
-    
-    
-    
+
 }

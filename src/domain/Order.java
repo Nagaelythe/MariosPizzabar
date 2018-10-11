@@ -40,6 +40,11 @@ public class Order {
     public ArrayList<Pizza> getPizzas() {
         return pizzas;
     }
+
+    @Override
+    public String toString() {
+        return "Order{" + "pizzas=" + pizzas + ", customer=" + customer + ", afhentet=" + afhentet + '}';
+    }
     
     
     
