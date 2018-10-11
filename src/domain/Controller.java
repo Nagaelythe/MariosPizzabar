@@ -81,7 +81,7 @@ public class Controller {
                         break;
                     }
                     case "2": {
-//                        ui.
+                        showPTM();
                         break;
                     }
                     case "3": {
