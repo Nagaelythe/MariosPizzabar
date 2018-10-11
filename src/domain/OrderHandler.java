@@ -51,5 +51,14 @@ public class OrderHandler{
     public ArrayList<Order> in() {
         return Orders;
     }
-
+    
+    @Override
+    public String toString(){
+        String out = "";
+        int i = 1;
+        for (Order O : Orders) {
+            out+= i++ + O.toString() +"\n";
+        }
+        return out;
+    }
 }

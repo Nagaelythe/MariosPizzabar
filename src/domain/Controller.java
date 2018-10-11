@@ -77,17 +77,7 @@ public class Controller {
                 switch (ui.SC.nextLine()) {
 
                     case "1": {
-                        int index = 1;
-                        for (String string : arch.readPizzaCSVList()) {
-                            String[] pizzaDetaljer = string.split(",");
-                            System.out.printf("%1$d. %2$: %3$skr, %4$kr, %5$kr\n",
-                                    index, pizzaDetaljer[0], pizzaDetaljer[1],
-                                     pizzaDetaljer[2], pizzaDetaljer[3]);
-                            System.out.println(index + ". " + pizzaDetaljer[0] + ", Alm: " + pizzaDetaljer[1]
-                                    + "kr, Deep pan: " + pizzaDetaljer[2] + "kr, Familie: "
-                                    + pizzaDetaljer[3] + "kr");
-                            index++;
-                        }
+                        printPizzaMenu(arch);
                         break;
                     }
                     case "2": {
@@ -112,6 +102,20 @@ public class Controller {
         }
     }
 
+    public void printPizzaMenu(Archive arch) {
+        int index = 1;
+        for (String string : arch.readPizzaCSVList()) {
+            String[] pizzaDetaljer = string.split(",");
+            System.out.printf("%1$d. %2$: %3$skr, %4$kr, %5$kr\n",
+                    index, pizzaDetaljer[0], pizzaDetaljer[1],
+                    pizzaDetaljer[2], pizzaDetaljer[3]);
+            System.out.println(index + ". " + pizzaDetaljer[0] + ", Alm: " + pizzaDetaljer[1]
+                    + "kr, Deep pan: " + pizzaDetaljer[2] + "kr, Familie: "
+                    + pizzaDetaljer[3] + "kr");
+            index++;
+        }
+    }
+
     public void showPTM() {
         ui.dispPTM(PTM);
 
@@ -122,7 +126,7 @@ public class Controller {
         System.out.println("1: fjern pizza fra arbejds liste. \n2: tilbage til hovedmenuen.");
         switch (ui.getNumMinMax(1, 2)) {
             case 1:
-                if (PTM.size()==1) {
+                if (PTM.size() == 1) {
                     PTM.pizzaComplete();
                 } else {
                     PTM.pizzaComplete(ui.getNumMinMax(1, 10));
@@ -133,6 +137,10 @@ public class Controller {
                 return;
         }
 
+    }
+
+    public void completeOrder() {
+        System.out.println(OH);
     }
 
 }
