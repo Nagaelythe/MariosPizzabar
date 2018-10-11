@@ -56,7 +56,7 @@ public class UI {
             num = Integer.parseInt(SC.nextLine());
         } catch (NumberFormatException e) {
             System.out.println("Input skal være et heltal!");
-            archive.writeWithNio(e.getMessage());
+            archive.writeLogger(e.getMessage());
             getNumMinMax(min, max);
         }
         if (num < min || num > max) {
