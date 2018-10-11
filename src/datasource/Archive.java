@@ -2,16 +2,11 @@ package datasource;
 
 import java.util.ArrayList;
 import java.io.*;
-
+import java.util.regex.*;
 import java.nio.file.*;
 import java.util.Arrays;
 import java.util.List;
 
-/*readSmallTextToList
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author Niels Bang
@@ -35,6 +30,21 @@ public class Archive {
 
     public void setWorkingDir(String dir) {
         workingDir = dir;
+    }
+
+    public ArrayList<String> getPizzaNames() {
+        ArrayList<String> pizzas = readPizzaCSVList();
+        ArrayList<String> pizzaNames = new ArrayList<>();
+        String buffer = "";
+        for (String s : pizzas) {
+            buffer += s + '\n';
+        }
+        Pattern p = Pattern.compile("^(.*?),", Pattern.MULTILINE);
+        Matcher m = p.matcher(buffer);
+        while (m.find()) {
+            pizzaNames.add(m.group(1));
+        }
+        return pizzaNames;
     }
 
     public ArrayList<domain.Order> getOrder(domain.Customer customer) {
@@ -112,11 +122,15 @@ public class Archive {
         return pizzaArrayList;
     }
 
-    public void writeWithNio(String errorString) {
+    public void writeLogger(String errorString) {
         try {
             Path path = Paths.get(logger);
-            String[] arr = new String[]{errorString};
-            List<String> list = Arrays.asList(arr);
+            ArrayList<String> arr = new ArrayList<String>();
+            List<String> list = new ArrayList<String>();
+            list.add(errorString);
+            for (String str : Files.readAllLines(path)) {
+                list.add(str);
+            }
             Files.write(path, list);
         } catch (IOException ex) {
             if (DEBUG) {
