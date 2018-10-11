@@ -25,7 +25,7 @@ public class Pizza {
     }
     //overload
     public Pizza(int Number){
-        this.number = number;
+        this.number = Number;
         // Find pizzaen ud fra menuen.
     }
     
