@@ -12,13 +12,13 @@ import java.util.ArrayList;
  * @author Martin Wulff
  */
 public class Order {
-    Pizza pizza;
+//    Pizza pizza;
     ArrayList<Pizza> pizzas = new ArrayList<>();
     public final Customer customer;
     private boolean afhentet = false;
         
     public Order(Pizza pizza,Customer customer){
-        this.pizza = pizza;
+        this.pizzas.add(pizza);
         this.customer = customer;
         this.customer.addPizzaToCustomer(pizza);
     }
@@ -26,6 +26,7 @@ public class Order {
     public Order(ArrayList<Pizza> pizzas,Customer customer){
         this.customer = customer;
         this.pizzas = pizzas;         
+        this.customer.addPizzasToCustomer(pizzas);
     }
     
     public void afhented(){

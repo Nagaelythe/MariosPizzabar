@@ -28,6 +28,10 @@ public class Pizza {
         // Find pizzaen ud fra menuen.
     }
     
+    public Pizza(String name){
+        // find pizzaen ud fra menuen.
+    }
+    
     public void addTopping(String topping){
         extraTopping.add(topping);
         price++;

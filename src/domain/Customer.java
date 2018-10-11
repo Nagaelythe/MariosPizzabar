@@ -36,6 +36,12 @@ public class Customer {
         customerOrders.add(pizza);
     }
 
+    public void addPizzasToCustomer(ArrayList<Pizza> Pizzas){
+        for(Pizza p: Pizzas){
+            customerOrders.add(p);
+        }
+    }
+    
     public void showOrders() {
         Archive arch = new Archive();
         System.out.println(name + "'s tidligere ordrer:");
