@@ -117,7 +117,7 @@ public class Controller {
             System.out.println("Ingen pizzaer mangler at blive lavet.");
             return;
         }
-        System.out.println("1: fjern pizza fra arbejds liste. \n2: tilbage til hovedmenuen.");
+        System.out.println("1: Fjern pizza fra arbejds liste. \n2: Tilbage til hovedmenuen.");
         switch (ui.getNumMinMax(1, 2)) {
             case 1:
                 if (PTM.size() == 1) {
