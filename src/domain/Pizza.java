@@ -41,5 +41,16 @@ public class Pizza {
         this.name = name;
         this.number = number;    
     }
+
+    @Override
+    public String toString() {
+        return "Pizza " + number + ", " + name + "        " + price + " dkk ";
+    }
+    
+    public int getPrice(){
+        return price;
+    }
+    
+    
     
 }

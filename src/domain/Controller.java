@@ -19,7 +19,16 @@ public class Controller {
     private OrderHandler oven = new OrderHandler();
 
     public static void main(String[] args) {
-        new Controller().programMenu();
+        //new Controller().programMenu();
+        //new datasource.Receipt().drawArt();
+        ArrayList<Pizza> pizzas = new ArrayList<>();
+        pizzas.add(new Pizza(1, "Magheritta"));
+        pizzas.add(new Pizza(12, "Torino"));
+        pizzas.add(new Pizza(2, "Vesuvio"));
+        new datasource.Receipt(new Order(pizzas, new Customer("John Testperson", 12345678)));
+       
+        
+        
     }
 
   

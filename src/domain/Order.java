@@ -36,6 +36,12 @@ public class Order {
     public boolean isDone(){
         return afhentet;
     }
+
+    public ArrayList<Pizza> getPizzas() {
+        return pizzas;
+    }
+    
+    
     
     
 }
