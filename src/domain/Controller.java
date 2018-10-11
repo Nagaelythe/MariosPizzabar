@@ -24,8 +24,6 @@ public class Controller {
         new Controller().programMenu();
     }
 
-  
-
     private OrderHandler OH = new OrderHandler();
     private final Scanner SC = new Scanner(System.in); // skal nok fjernes.
     private UI ui = new UI();
@@ -63,28 +61,34 @@ public class Controller {
     }
 
     public void programMenu() {
-        UI ui=new UI();
+        UI ui = new UI();
         Archive arch = new Archive();
         boolean stayin = true;
         while (stayin) {
+            ui.getMenu();
             try {
                 switch (ui.SC.nextLine()) {
 
                     case "1": {
-                        int index=1;
+                        int index = 1;
                         for (String string : arch.readPizzaCSVList()) {
                             String[] pizzaDetaljer = string.split(",");
-                            System.out.println(index + ". " + pizzaDetaljer[0] +", Alm: " +pizzaDetaljer[1] +
-                                    "kr, Indbagt: " + pizzaDetaljer[2]+ "kr, Familie: " +
-                                    pizzaDetaljer[3] + "kr");
+                            System.out.println(index + ". " + pizzaDetaljer[0] + ", Alm: " + pizzaDetaljer[1]
+                                    + "kr, Deep pan: " + pizzaDetaljer[2] + "kr, Familie: "
+                                    + pizzaDetaljer[3] + "kr");
                             index++;
                         }
                         break;
                     }
                     case "2": {
+//                        ui.
                         break;
                     }
                     case "3": {
+                    }
+                    case "4": {
+                    }
+                    case "5": {
                         stayin = false;
                         break;
                     }
