@@ -14,8 +14,8 @@ import java.util.ArrayList;
  * @author Martin Wulff
  */
 public class PizzasToMake {
-    ArrayList<Pizza> PTM = new ArrayList<>();
-    ArrayList<LocalDateTime> Time = new ArrayList<>();
+    private ArrayList<Pizza> PTM = new ArrayList<>();
+    private ArrayList<LocalDateTime> Time = new ArrayList<>();
     public PizzasToMake(){    
     }
     
@@ -28,6 +28,10 @@ public class PizzasToMake {
     public void addPizzas(Pizza P, LocalDateTime T){
         this.PTM.add(P);
         this.Time.add(T);
+    }
+    
+    public boolean noPTM(){
+        return PTM.isEmpty();
     }
     
     @Override

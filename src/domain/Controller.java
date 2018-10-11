@@ -42,6 +42,8 @@ public class Controller {
 
     public void CreateOrder() {
         //Get UI Element from here.
+        System.out.println("Indtast nr på den bestilte pizza: ");
+              
         Pizza P = new Pizza(ui.getNumMinMax(0, 15));  // evt implementer UI metoder til at få et ID og et navn, eller lav en Json string til det her?
 
         //Creating more pizzas:
@@ -98,6 +100,7 @@ public class Controller {
                     }
                     case "3": {
                         CreateOrder();
+                        break;
                     }
                     case "4": {
                     }
@@ -117,6 +120,11 @@ public class Controller {
     
     public void showPTM(){
         ui.dispPTM(PTM);
+        System.out.println("1: fjern pizza fra arbejds liste. \n2: tilbage til hovedmenuen.");
+        if(PTM.noPTM()){
+            System.out.println("Ingen pizzaer mangler at blive lavet.");
+            return;
+        }
         switch(ui.getNumMinMax(1, 2)){
             case 1:
                     PTM.pizzaComplete(ui.getNumMinMax(1, 10));
