@@ -1,3 +1,11 @@
+java.lang.NumberFormatException: For input string: "4'"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at presentation.UI.getNumMinMax(UI.java:58)
+	at domain.Controller.programMenu(Controller.java:78)
+	at domain.Controller.main(Controller.java:25)
+
 <<<<<<< HEAD
 <<<<<<< HEAD
 java.lang.NumberFormatException: For input string: ""

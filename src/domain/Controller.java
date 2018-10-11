@@ -19,10 +19,9 @@ import presentation.UI;
  */
 public class Controller {
 
-    
-
     public static void main(String[] args) {
-        new Controller().programMenu();        
+        new Controller().programMenu();
+
     }
 
     private OrderHandler OH = new OrderHandler();
@@ -30,14 +29,13 @@ public class Controller {
     private UI ui = new UI();
     private PizzasToMake PTM = new PizzasToMake();
     private OrderHandler oven = new OrderHandler();
-    private  Archive arch = new Archive();
-    private int P = arch.getPizzaNames().size();  // amount of different pizzas offered.
+    private int P = new Archive().getPizzaNames().size();  // amount of different pizzas offered.
 
     public void CreateOrder() {
         //Get UI Element from here.
         ui.newPizz();
         Order O = null;
-        Pizza P = new Pizza(ui.getNumMinMax(0, this.P-1),ui.getNumMinMax(1, 3));  // evt implementer UI metoder til at få et ID og et navn, eller lav en Json string til det her?
+        Pizza P = new Pizza(ui.getNumMinMax(0, this.P - 1), ui.getNumMinMax(1, 3));  // evt implementer UI metoder til at få et ID og et navn, eller lav en Json string til det her?
 
         //Creating more pizzas:
         ui.orderMore();
@@ -45,12 +43,12 @@ public class Controller {
             ArrayList<Pizza> Pz = new ArrayList<>();
             Pz.add(P);
             ui.newPizz();
-            P = new Pizza(ui.getNumMinMax(0, this.P-1),ui.getNumMinMax(1, 3));
+            P = new Pizza(ui.getNumMinMax(0, this.P - 1), ui.getNumMinMax(1, 3));
             Pz.add(P);
             ui.orderMore();
             while (ui.getYN()) {
                 ui.newPizz();
-                P = new Pizza(ui.getNumMinMax(0, this.P-1),ui.getNumMinMax(1, 3));
+                P = new Pizza(ui.getNumMinMax(0, this.P - 1), ui.getNumMinMax(1, 3));
                 Pz.add(P);
                 ui.orderMore();
             }
@@ -69,19 +67,20 @@ public class Controller {
             }
         }
         new datasource.Receipt(O);
+        new datasource.Archive().addToArchive(O);
 
     }
 
     public void programMenu() {
         UI ui = new UI();
-       
+
         boolean stayin = true;
         while (stayin) {
             ui.getMenu();
             switch (ui.getNumMinMax(0, 5)) {
 
                 case 1: {
-                    printPizzaMenu(arch);
+                    printPizzaMenu();
                     break;
                 }
                 case 2: {
@@ -103,9 +102,9 @@ public class Controller {
         }
     }
 
-    public void printPizzaMenu(Archive arch) {
+    public void printPizzaMenu() {
         int index = 1;
-        for (String string : arch.readPizzaCSVList()) {
+        for (String string : new Archive().readPizzaCSVList()) {
             String[] pizzaDetaljer = string.split(",");
             System.out.println(index + ". " + pizzaDetaljer[0] + ", Alm: " + pizzaDetaljer[1]
                     + "kr, Deep pan: " + pizzaDetaljer[2] + "kr, Familie: "
@@ -138,15 +137,17 @@ public class Controller {
     }
 
     public void completeOrder() {
-        if(OH.size()== 0 ) {
+        if (OH.size() == 0) {
             System.out.println("der er ingen bestillinger lige nu.");
             return;
         }
         System.out.println(OH);
         System.out.println("Hvilken bestilling bliver afhentet? tryk 0 at komme tilbage.");
         int input = ui.getNumMinMax(1, OH.size());
-        if(input != 0) OH.completeOrder(input-1);
-       
+        if (input != 0) {
+            OH.completeOrder(input - 1);
+        }
+
     }
 
 }
