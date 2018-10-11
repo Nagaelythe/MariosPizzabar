@@ -6,6 +6,8 @@
 package presentation;
 
 import datasource.Archive;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.Scanner;
 
 /**
@@ -54,9 +56,12 @@ public class UI {
         int num = 0;
         try {
             num = Integer.parseInt(SC.nextLine());
-        } catch (NumberFormatException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println("Input skal være et heltal!");
-            archive.writeLogger(e.getMessage());
+            StringWriter sw = new StringWriter();
+            e.printStackTrace(new PrintWriter(sw));
+            String exceptionAsString = sw.toString();
+            archive.writeLogger(exceptionAsString);
             getNumMinMax(min, max);
         }
         if (num < min || num > max) {
@@ -104,7 +109,7 @@ public class UI {
     public void getMenu() {
         stars();
         System.out.println("1. Vis menu\n2. Vis bestillinger\n3. Opret ordre\n"
-                +"4. Odrer Afhentes\n" + "5. Quit");
+                + "4. Odrer Afhentes\n" + "5. Quit");
     }
 
     public void stars() {
