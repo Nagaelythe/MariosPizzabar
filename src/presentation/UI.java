@@ -70,7 +70,9 @@ public class UI {
         }
         return num;
     }
-
+    public void newPizz(){
+         System.out.println("Input pizza nr, og derefter om det er 1: alm, 2: deep pan, 3: fammilie.");
+    }
     public boolean getYN() {
 
         String input = SC.nextLine();

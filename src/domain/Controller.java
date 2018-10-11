@@ -32,22 +32,22 @@ public class Controller {
 
     public void CreateOrder() {
         //Get UI Element from here.
-        System.out.println("Indtast nr på den bestilte pizza: ");
+        ui.newPizz();
         Order O = null;
-        Pizza P = new Pizza(ui.getNumMinMax(0, 15));  // evt implementer UI metoder til at få et ID og et navn, eller lav en Json string til det her?
+        Pizza P = new Pizza(ui.getNumMinMax(0, 15),ui.getNumMinMax(1, 3));  // evt implementer UI metoder til at få et ID og et navn, eller lav en Json string til det her?
 
         //Creating more pizzas:
         ui.orderMore();
         if (ui.getYN()) {
             ArrayList<Pizza> Pz = new ArrayList<>();
             Pz.add(P);
-            System.out.println("Input pizza nr");
-            P = new Pizza(ui.getNumMinMax(0, 15));
+            ui.newPizz();
+            P = new Pizza(ui.getNumMinMax(0, 15),ui.getNumMinMax(1, 3));
             Pz.add(P);
             ui.orderMore();
             while (ui.getYN()) {
-                System.out.println("Input pizza nr");
-                P = new Pizza(ui.getNumMinMax(0, 15));
+                ui.newPizz();
+                P = new Pizza(ui.getNumMinMax(0, 15),ui.getNumMinMax(1, 3));
                 Pz.add(P);
                 ui.orderMore();
             }
@@ -118,7 +118,7 @@ public class Controller {
             System.out.println("Ingen pizzaer mangler at blive lavet.");
             return;
         }
-        System.out.println("1: fjern pizza fra arbejds liste. \n2: tilbage til hovedmenuen.");
+        System.out.println("1: Fjern pizza fra arbejds liste. \n2: Tilbage til hovedmenuen.");
         switch (ui.getNumMinMax(1, 2)) {
             case 1:
                 if (PTM.size() == 1) {
