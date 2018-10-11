@@ -5,6 +5,7 @@
  */
 package domain;
 
+import datasource.Archive;
 import java.util.ArrayList;
 
 /**
@@ -16,6 +17,7 @@ public class Pizza {
     private String name;
     ArrayList<String> extraTopping = new ArrayList<>();
     private int price=0;
+    private Archive arch = new Archive();
     
     public Pizza(int number, String name){
         this.name = name;
@@ -24,8 +26,11 @@ public class Pizza {
         
     }
     //overload
-    public Pizza(int Number){
+    public Pizza(int Number,int type){
         this.number = Number;
+        String[] info = arch.readPizzaCSVList().get(Number).split(",");
+        this.name = info[0];
+        this.price = Integer.parseInt(info[type]);
         // Find pizzaen ud fra menuen.
     }
     
