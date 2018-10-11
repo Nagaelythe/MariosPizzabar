@@ -83,7 +83,7 @@ public class Controller {
                         break;
                     }
                     case "2": {
-//                        ui.
+                        showPTM();
                         break;
                     }
                     case "3": {
@@ -95,10 +95,10 @@ public class Controller {
                         break;
                     }
                     default: {
-                        break;
+                        throw new IllegalArgumentException();
                     }
                 }
-            } catch (Exception ex) {
+            } catch (IllegalArgumentException ex) {
                 System.out.println("Indtast en rigtig værdi");
             }
         }
