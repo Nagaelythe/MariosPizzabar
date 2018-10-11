@@ -97,7 +97,7 @@ public class UI {
     
     public void getMenu(){
         stars();
-        System.out.println("1. Vis menu\n2. Opret ordre\n3. Fjern ordre\n");
+        System.out.println("1. Vis menu\n2. Vis bestillinger\n3. Opret ordre\n4. Fjern ordre\n5. Quit");
         
     }
     
