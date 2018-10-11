@@ -24,7 +24,7 @@ public class Archive {
     private final String customerFileName = workingDir + "customerFileName";
 //    private final String menuPizzaFileName = workingDir +"pizzaMenu.csv";
     private final File archive = new File(filename);
-    public boolean DEBUG = true; //true for debugging..
+    public boolean DEBUG = false; //true for debugging..
 
     private ArrayList<String> pizzaArrayList = new ArrayList();                      //menuPizza listen
     private Path pizzaFile;                 //menuPizza sti. Skal bruges af 

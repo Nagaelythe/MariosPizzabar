@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Martin Wulff
  */
-public class Order {
+public class Order implements java.io.Serializable {
 //    Pizza pizza;
 
     ArrayList<Pizza> pizzas = new ArrayList<>();
