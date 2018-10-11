@@ -2,14 +2,9 @@ package datasource;
 
 import java.util.ArrayList;
 import java.io.*;
-
+import java.util.regex.*;
 import java.nio.file.*;
 
-/*readSmallTextToList
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author Niels Bang
@@ -31,6 +26,21 @@ public class Archive {
 
     public void setWorkingDir(String dir) {
         workingDir = dir;
+    }
+
+    public ArrayList<String> getPizzaNames() {
+        ArrayList<String> pizzas = readPizzaCSVList();
+        ArrayList<String> pizzaNames = new ArrayList<>();
+        String buffer = "";
+        for (String s : pizzas) {
+            buffer += s + '\n';
+        }
+        Pattern p = Pattern.compile("^(.*?),", Pattern.MULTILINE);
+        Matcher m = p.matcher(buffer);
+        while (m.find()) {
+            pizzaNames.add(m.group(1));
+        }
+        return pizzaNames;
     }
 
     public ArrayList<domain.Order> getOrder(domain.Customer customer) {

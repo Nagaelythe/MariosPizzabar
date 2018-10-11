@@ -21,7 +21,12 @@ public class Controller {
     private OrderHandler oven = new OrderHandler();
 
     public static void main(String[] args) {
-        new Controller().programMenu();
+        //new Controller().programMenu();
+        
+        ArrayList<String> temp = new datasource.Archive().getPizzaNames();
+        for(String s: temp){
+            System.out.println(s);
+        }
 
     }
 
