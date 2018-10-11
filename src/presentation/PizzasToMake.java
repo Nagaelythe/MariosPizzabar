@@ -48,9 +48,15 @@ public class PizzasToMake {
         Time.remove(0);
     }
         public void pizzaComplete(int i){
-        if (i<=0 || i>=this.PTM.size()) throw new IllegalArgumentException("gonn be a null pointer ma dude");
+       
+        if (i<=0 || i>this.PTM.size()) throw new IllegalArgumentException("gonn be a null pointer ma dude");
         PTM.remove(i-1);
         Time.remove(i-1);
     }
+        
+        
+        public int size(){
+            return PTM.size();
+        }
     
 }

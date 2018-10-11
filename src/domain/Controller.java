@@ -124,8 +124,12 @@ public class Controller {
         System.out.println("1: fjern pizza fra arbejds liste. \n2: tilbage til hovedmenuen.");
         switch (ui.getNumMinMax(1, 2)) {
             case 1:
-                PTM.pizzaComplete(ui.getNumMinMax(1, 10));
-                showPTM();
+                if (PTM.size()==1) {
+                    PTM.pizzaComplete();
+                } else {
+                    PTM.pizzaComplete(ui.getNumMinMax(1, 10));
+                    showPTM();
+                }
                 break;
             case 2:
                 return;
