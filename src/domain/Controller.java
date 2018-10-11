@@ -5,6 +5,7 @@
  */
 package domain;
 
+import datasource.Archive;
 import java.util.ArrayList;
 import java.util.Scanner;
 import presentation.UI;
@@ -14,6 +15,12 @@ import presentation.UI;
  * @author Martin Wulff
  */
 public class Controller {
+
+    public static void main(String[] args) {
+        new Controller().programMenu();
+    }
+
+  
 
     private Oven oven = new Oven();
     private final Scanner SC = new Scanner(System.in); // skal nok fjernes.
@@ -48,7 +55,32 @@ public class Controller {
     }
 
     public void programMenu() {
-        
+        UI ui=new UI();
+        Archive arch = new Archive();
+        boolean stayin = true;
+        while (stayin) {
+            try {
+                switch (ui.SC.nextLine()) {
+
+                    case "1": {
+                        
+                        break;
+                    }
+                    case "2": {
+                        break;
+                    }
+                    case "3": {
+                        stayin = false;
+                        break;
+                    }
+                    default: {
+                        break;
+                    }
+                }
+            } catch (Exception ex) {
+                System.out.println("Indtast en rigtig værdi");
+            }
+        }
     }
 
 }
