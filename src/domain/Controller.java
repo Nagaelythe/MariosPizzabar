@@ -6,8 +6,10 @@
 package domain;
 
 import datasource.Archive;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
+import presentation.PizzasToMake;
 import presentation.UI;
 
 /**
@@ -25,6 +27,7 @@ public class Controller {
     private OrderHandler OH = new OrderHandler();
     private final Scanner SC = new Scanner(System.in); // skal nok fjernes.
     private UI ui = new UI();
+    private PizzasToMake PTM = new PizzasToMake();
 
     public void CreateOrder() {
         //Get UI Element from here.
@@ -44,11 +47,14 @@ public class Controller {
             }
             Customer C = new Customer(ui.getName(), ui.getPhone());
             Order O = new Order(Pz, C);
+            PTM.addPizzas(Pz, LocalDateTime.now());
+            OH.newOrder(O);
 
         } else {
             Customer C = new Customer(ui.getName(), ui.getPhone());
             Order O = new Order(P, C);
             ui.confirmOrder(O);
+            PTM.addPizzas(P, LocalDateTime.now());
             OH.newOrder(O);
         }
 
@@ -95,5 +101,18 @@ public class Controller {
             }
         }
     }
-
+    
+    public void showPTM(){
+        ui.dispPTM(PTM);
+        switch(ui.getNumMinMax(1, 2)){
+            case 1:
+                    PTM.pizzaComplete(ui.getNumMinMax(1, 10));
+                    showPTM();
+                    break;
+            case 2:
+                    return;
+            }
+        
+        
+    }
 }
