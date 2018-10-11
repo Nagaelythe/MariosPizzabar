@@ -4,12 +4,30 @@
 | |\/| |/ _` | '__| |/ _ \  / __| |  ___/ |_  /_  / _` |
 | |  | | (_| | |  | | (_) | \__ \ | |   | |/ / / / (_| |
 |_|  |_|\__,_|_|  |_|\___/  |___/ |_|   |_/___/___\__,_|
-Kunde:  fsg      tlf 12345678
+<<<<<<< HEAD
+Kunde:  asr      tlf 2345678
 Du blev betjent af xxxx 
 
-Pizza nr. 1, Vesuvio        56 dkk 
-Pizza nr. 2, Pepperoni        100 dkk 
-Total: 156
+Pizza nr. 13, Matador        87 dkk 
+Pizza nr. 0, Margheritta        50 dkk 
+Total: 137
+=======
+Kunde:  JOGN AEWAWEAWEAWE      tlf 12345678
+Du blev betjent af xxxx 
+
+
+Pizza nr. 2, null        0 dkk 
+Pizza nr. 4, null        0 dkk 
+Pizza nr. 15, null        0 dkk 
+Pizza nr. 15, null        0 dkk 
+Pizza nr. 14, null        0 dkk 
+=======
+Pizza nr. 1, Magheritta        0 dkk 
+Pizza nr. 12, Torino        0 dkk 
+Pizza nr. 2, Vesuvio        0 dkk 
+
+Total: 0
+>>>>>>> 237eed13d15cec219905cc09b754be5457f399ea
 
  Marios Pizzabar 
  Lyngby Hovedgade x 
