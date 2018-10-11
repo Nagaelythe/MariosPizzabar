@@ -135,7 +135,10 @@ public class Controller {
     }
 
     public void completeOrder() {
-        if(OH.size()== 0 ) return;
+        if(OH.size()== 0 ) {
+            System.out.println("der er ingen bestillinger lige nu.");
+            return;
+        }
         System.out.println(OH);
         System.out.println("Hvilken bestilling bliver afhentet? tryk 0 at komme tilbage.");
         int input = ui.getNumMinMax(1, OH.size());
