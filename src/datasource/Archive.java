@@ -17,6 +17,8 @@ public class Archive {
     private final String filename = workingDir + "archive.bin";
     private final String menuPizzaFileName = System.getProperty("user.dir")
             + "/src/datasource/pizzaMenu.csv";
+    private final String statistik = System.getProperty("user.dir")
+            + "/src/datasource/statistik.txt";
     private final String logger = System.getProperty("user.dir")
             + "/src/datasource/logger.txt";
     private final String customerFileName = workingDir + "customerFileName";
@@ -128,6 +130,24 @@ public class Archive {
             ArrayList<String> arr = new ArrayList<String>();
             List<String> list = new ArrayList<String>();
             list.add(errorString);
+            for (String str : Files.readAllLines(path)) {
+                list.add(str);
+            }
+            Files.write(path, list);
+        } catch (IOException ex) {
+            if (DEBUG) {
+                ex.printStackTrace();
+            }
+
+        }
+    }
+
+    public void writeStatistics(String statString) {
+        try {
+            Path path = Paths.get(statistik);
+            ArrayList<String> arr = new ArrayList<String>();
+            List<String> list = new ArrayList<String>();
+            list.add(statString);
             for (String str : Files.readAllLines(path)) {
                 list.add(str);
             }
