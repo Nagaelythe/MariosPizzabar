@@ -16,13 +16,15 @@ import presentation.UI;
  */
 public class Controller {
 
+    private OrderHandler oven = new OrderHandler();
+
     public static void main(String[] args) {
         new Controller().programMenu();
     }
 
   
 
-    private Oven oven = new Oven();
+    private OrderHandler OH = new OrderHandler();
     private final Scanner SC = new Scanner(System.in); // skal nok fjernes.
     private UI ui = new UI();
 
@@ -49,7 +51,7 @@ public class Controller {
             Customer C = new Customer(ui.getName(), ui.getPhone());
             Order O = new Order(P, C);
             ui.confirmOrder(O);
-            oven.newOrder(O);
+            OH.newOrder(O);
         }
 
     }
