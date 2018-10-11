@@ -73,31 +73,27 @@ public class Controller {
         boolean stayin = true;
         while (stayin) {
             ui.getMenu();
-            try {
-                switch (ui.SC.nextLine()) {
+            switch (ui.getNumMinMax(0, 5)) {
 
-                    case "1": {
-                        printPizzaMenu(arch);
-                        break;
-                    }
-                    case "2": {
-                        showPTM();
-                        break;
-                    }
-                    case "3": {
-                        CreateOrder();
-                        break;
-                    }
-                    case "4": {
-                        stayin = false;
-                        break;
-                    }
-                    default: {
-                        throw new IllegalArgumentException();
-                    }
+                case 1: {
+                    printPizzaMenu(arch);
+                    break;
                 }
-            } catch (IllegalArgumentException ex) {
-                System.out.println("Indtast en rigtig værdi");
+                case 2: {
+                    showPTM();
+                    break;
+                }
+                case 3: {
+                    CreateOrder();
+                    break;
+                }
+                case 4: {
+                    stayin = false;
+                    break;
+                }
+                case 5:
+                    stayin = false;
+                    break;
             }
         }
     }
