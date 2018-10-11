@@ -87,6 +87,7 @@ public class Controller {
                         break;
                     }
                     case "3": {
+                        CreateOrder();
                     }
                     case "4": {
                     }
