@@ -49,17 +49,13 @@ public class PizzasToMake {
     }
 
     public void pizzaComplete() {
-        archie.writeStatistics(PTM.get(0).toString());
         PTM.remove(0);
         Time.remove(0);
     }
 
     public void pizzaComplete(int i) {
 
-        if (i <= 0 || i > this.PTM.size()) {
-            throw new IllegalArgumentException("gonna be a null pointer ma dude");
-        }
-        archie.writeStatistics(PTM.get(0).toString());
+        if (i <= 0 || i > this.PTM.size()) throw new IllegalArgumentException("gonna be a null pointer ma dude");
         PTM.remove(i - 1);
         Time.remove(i - 1);
     }
