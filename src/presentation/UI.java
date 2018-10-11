@@ -94,5 +94,15 @@ public class UI {
         System.out.println("Indtast navnet på kunden.");
         return SC.nextLine();
     }
+    
+    public void getMenu(){
+        stars();
+        System.out.println("1. Vis menu\n2. Opret ordre\n3. Fjern ordre\n");
+        
+    }
+    
+      public void stars() {
+        System.out.println("***************");
+    }
 
 }
