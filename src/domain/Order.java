@@ -13,27 +13,40 @@ import java.util.ArrayList;
  */
 public class Order {
 //    Pizza pizza;
+
     ArrayList<Pizza> pizzas = new ArrayList<>();
     public final Customer customer;
     private boolean afhentet = false;
-        
-    public Order(Pizza pizza,Customer customer){
+    public final int price;
+
+    public Order(Pizza pizza, Customer customer) {
         this.pizzas.add(pizza);
         this.customer = customer;
         this.customer.addPizzaToCustomer(pizza);
+        int sum = 0;
+        for (Pizza p : pizzas) {
+            sum += p.getPrice();
+        }
+        this.price = sum;
     }
+
     // Overload Constructor to handle orders of more than one pizza.
-    public Order(ArrayList<Pizza> pizzas,Customer customer){
+    public Order(ArrayList<Pizza> pizzas, Customer customer) {
         this.customer = customer;
-        this.pizzas = pizzas;         
+        this.pizzas = pizzas;
         this.customer.addPizzasToCustomer(pizzas);
+        int sum = 0;
+        for (Pizza p : pizzas) {
+            sum += p.getPrice();
+        }
+        this.price = sum;
     }
-    
-    public void afhented(){
+
+    public void afhented() {
         this.afhentet = true;
     }
-    
-    public boolean isDone(){
+
+    public boolean isDone() {
         return afhentet;
     }
 
@@ -43,11 +56,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" + "pizzas=" + pizzas + ", customer=" + customer + ", afhentet=" + afhentet + '}';
+        return "Order{" + "pizzas=" + pizzas + ", customer=" + customer + ", Pris" + price + '}';
     }
-    
-    
-    
 
-    
 }

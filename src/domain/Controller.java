@@ -134,10 +134,11 @@ public class Controller {
     }
 
     public void completeOrder() {
+        if(OH.size()== 0 ) return;
         System.out.println(OH);
         System.out.println("Hvilken bestilling bliver afhentet? tryk 0 at komme tilbage.");
         int input = ui.getNumMinMax(1, OH.size());
-        if(input != 0) OH.completeOrder(input);
+        if(input != 0) OH.completeOrder(input-1);
        
     }
 
