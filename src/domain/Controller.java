@@ -65,7 +65,14 @@ public class Controller {
                 switch (ui.SC.nextLine()) {
 
                     case "1": {
-                        
+                        int index=1;
+                        for (String string : arch.readPizzaCSVList()) {
+                            String[] pizzaDetaljer = string.split(",");
+                            System.out.println(index + ". " + pizzaDetaljer[0] +", Alm: " +pizzaDetaljer[1] +
+                                    "kr, Indbagt: " + pizzaDetaljer[2]+ "kr, Familie: " +
+                                    pizzaDetaljer[3] + "kr");
+                            index++;
+                        }
                         break;
                     }
                     case "2": {
