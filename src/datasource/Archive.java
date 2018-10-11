@@ -142,22 +142,4 @@ public class Archive {
         }
     }
 
-    public void writeStatistics(String statString) {
-        try {
-            Path path = Paths.get(statistik);
-            ArrayList<String> arr = new ArrayList<String>();
-            List<String> list = new ArrayList<String>();
-            list.add(statString);
-            for (String str : Files.readAllLines(path)) {
-                list.add(str);
-            }
-            Files.write(path, list);
-        } catch (IOException ex) {
-            if (DEBUG) {
-                ex.printStackTrace();
-            }
-
-        }
-    }
-
 }

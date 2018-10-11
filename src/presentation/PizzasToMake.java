@@ -5,6 +5,7 @@
  */
 package presentation;
 
+import datasource.Archive;
 import domain.Pizza;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -14,49 +15,53 @@ import java.util.ArrayList;
  * @author Martin Wulff
  */
 public class PizzasToMake {
+
     private ArrayList<Pizza> PTM = new ArrayList<>();
     private ArrayList<LocalDateTime> Time = new ArrayList<>();
-    public PizzasToMake(){    
+    private Archive archie = new Archive();
+
+    public PizzasToMake() {
     }
-    
-    public void addPizzas(ArrayList<Pizza> P, LocalDateTime T){
+
+    public void addPizzas(ArrayList<Pizza> P, LocalDateTime T) {
         for (Pizza pizza : P) {
             this.PTM.add(pizza);
             this.Time.add(T);
-        }        
+        }
     }
-    public void addPizzas(Pizza P, LocalDateTime T){
+
+    public void addPizzas(Pizza P, LocalDateTime T) {
         this.PTM.add(P);
         this.Time.add(T);
     }
-    
-    public boolean noPTM(){
+
+    public boolean noPTM() {
         return PTM.isEmpty();
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         String out = "";
         for (int i = 0; i < PTM.size(); i++) {
-            out+= "Bestilling nr" + (i+1)  +": "+  PTM.get(i).toString() + " Bestilt kl: " + Time.get(i).getHour()+":" +Time.get(i).getMinute()+". \n";
+            out += "Bestilling nr" + (i + 1) + ": " + PTM.get(i).toString() + " Bestilt kl: " + Time.get(i).getHour() + ":" + Time.get(i).getMinute() + ". \n";
         }
         return out;
     }
-    
-    public void pizzaComplete(){
+
+    public void pizzaComplete() {
         PTM.remove(0);
         Time.remove(0);
     }
-        public void pizzaComplete(int i){
-       
-        if (i<=0 || i>this.PTM.size()) throw new IllegalArgumentException("gonn be a null pointer ma dude");
-        PTM.remove(i-1);
-        Time.remove(i-1);
+
+    public void pizzaComplete(int i) {
+
+        if (i <= 0 || i > this.PTM.size()) throw new IllegalArgumentException("gonna be a null pointer ma dude");
+        PTM.remove(i - 1);
+        Time.remove(i - 1);
     }
-        
-        
-        public int size(){
-            return PTM.size();
-        }
-    
+
+    public int size() {
+        return PTM.size();
+    }
+
 }
