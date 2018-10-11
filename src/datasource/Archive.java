@@ -236,7 +236,6 @@ public class Archive {
         //Pizzalisten til menu består af navn og priserne på alm,
         //deep pan og familie pizzaer
         //En liste returneres, som man må splitte hvor den bruges.
-        //List-listen er det eneste readAllLines vil returnere.
 
         try {
             pizzaFile = Paths.get(menuPizzaFileName);
