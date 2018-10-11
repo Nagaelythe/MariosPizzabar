@@ -69,7 +69,7 @@ public class Controller {
                         for (String string : arch.readPizzaCSVList()) {
                             String[] pizzaDetaljer = string.split(",");
                             System.out.println(index + ". " + pizzaDetaljer[0] +", Alm: " +pizzaDetaljer[1] +
-                                    "kr, Indbagt: " + pizzaDetaljer[2]+ "kr, Familie: " +
+                                    "kr, deep pan: " + pizzaDetaljer[2]+ "kr, Familie: " +
                                     pizzaDetaljer[3] + "kr");
                             index++;
                         }
