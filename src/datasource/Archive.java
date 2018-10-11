@@ -66,13 +66,26 @@ public class Archive {
         return orders;
     }
 
-    /*
+    public domain.Customer getCustomer(domain.Customer customer) {
+    ArrayList<domain.Customer> allCustomers = readArchive();
+
+        for (domain.Customer c : allCustomers) {
+            if (c.equals(customer)) {
+                return c;
+            }
+        }
+    //    throw new UserNotFoundException();
+//        throw new Exception();
+    return null;
+    }
+
+/*
     public void addToArchive(){
         FileOutputStream out = new FileOutputStream()
         AppendObjectOutputStream objectAppend = new AppendObjectOutputStream();
     }
-     */
-    public void addToArchive(domain.Order order) {
+ */
+public void addToArchive(domain.Order order) {
         try {
             FileOutputStream fileOut = new FileOutputStream(orderFile);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
@@ -111,6 +124,8 @@ public class Archive {
         }
         return obj;
     }
+
+
 
     /*
     public void readNIO() {
@@ -177,8 +192,11 @@ public class Archive {
         } catch (IOException ex) {
             if (DEBUG) {
                 ex.printStackTrace();
-            }
+            
+
+}
         }
     }
 
 }
+
