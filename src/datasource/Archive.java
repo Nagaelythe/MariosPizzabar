@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.io.*;
 import java.util.regex.*;
 import java.nio.file.*;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  *
@@ -15,6 +17,8 @@ public class Archive {
     private final String filename = workingDir + "archive.bin";
     private final String menuPizzaFileName = System.getProperty("user.dir")
             + "/src/datasource/pizzaMenu.csv";
+    private final String logger = System.getProperty("user.dir")
+            + "/src/datasource/logger.txt";
     private final String customerFileName = workingDir + "customerFileName";
 //    private final String menuPizzaFileName = workingDir +"pizzaMenu.csv";
     private final File archive = new File(filename);
@@ -116,7 +120,24 @@ public class Archive {
             ex.printStackTrace();
         }
         return pizzaArrayList;
+    }
 
+    public void writeLogger(String errorString) {
+        try {
+            Path path = Paths.get(logger);
+            ArrayList<String> arr = new ArrayList<String>();
+            List<String> list = new ArrayList<String>();
+            list.add(errorString);
+            for (String str : Files.readAllLines(path)) {
+                list.add(str);
+            }
+            Files.write(path, list);
+        } catch (IOException ex) {
+            if (DEBUG) {
+                ex.printStackTrace();
+            }
+
+        }
     }
 
 }

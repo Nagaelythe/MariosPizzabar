@@ -22,7 +22,7 @@ public class OrderHandler{
     private ArrayList<Order> Orders = new ArrayList<>();
     
     public OrderHandler(){
-        
+        Orders.clear();
     }
     
     private void controll() { //Placeholder. skal nok fjernes da den sikkert bliver redundant.
@@ -35,21 +35,30 @@ public class OrderHandler{
 
     public void newOrder(Order o) {
         Orders.add(o);
-
-        controll();
     }
 
-    public void completeOrder(Order o) {
-        if (!Orders.contains(o)) {
-            throw new IllegalArgumentException();
-        }
+    public void completeOrder(int i) {
+
         // Send order to archive,
-        Orders.remove(o);
+        Orders.remove(Orders.get(i));
     }
 
 
     public ArrayList<Order> in() {
         return Orders;
     }
-
+    
+    public int size(){
+        return this.Orders.size();
+    }
+    
+    @Override
+    public String toString(){
+        String out = "";
+        int i = 1;
+        for (Order O : Orders) {
+            out+= i++ + O.toString() +"\n";
+        }
+        return out;
+    }
 }

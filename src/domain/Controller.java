@@ -58,19 +58,20 @@ public class Controller {
             }
             Customer C = new Customer(ui.getName(), ui.getPhone());
             O = new Order(Pz, C);
-            PTM.addPizzas(Pz, LocalDateTime.now());
-            OH.newOrder(O);
-
+            if (ui.confirmOrder(O)) {
+                PTM.addPizzas(Pz, LocalDateTime.now());
+                OH.newOrder(O);
+            }
         } else {
             Customer C = new Customer(ui.getName(), ui.getPhone());
             O = new Order(P, C);
-            ui.confirmOrder(O);
-            PTM.addPizzas(P, LocalDateTime.now());
-            OH.newOrder(O);
+            if (ui.confirmOrder(O)) {
+                PTM.addPizzas(P, LocalDateTime.now());
+                OH.newOrder(O);
+            }
         }
         new datasource.Receipt(O);
-        
-        
+
     }
 
     public void programMenu() {
@@ -79,39 +80,39 @@ public class Controller {
         boolean stayin = true;
         while (stayin) {
             ui.getMenu();
-            try {
-                switch (ui.SC.nextLine()) {
+            switch (ui.getNumMinMax(0, 5)) {
 
-                    case "1": {
-                        int index = 1;
-                        for (String string : arch.readPizzaCSVList()) {
-                            String[] pizzaDetaljer = string.split(",");
-                            System.out.println(index + ". " + pizzaDetaljer[0] + ", Alm: " + pizzaDetaljer[1]
-                                    + "kr, Deep pan: " + pizzaDetaljer[2] + "kr, Familie: "
-                                    + pizzaDetaljer[3] + "kr");
-                            index++;
-                        }
-                        break;
-                    }
-                    case "2": {
-                        showPTM();
-                        break;
-                    }
-                    case "3": {
-                        CreateOrder();
-                        break;
-                    }
-                    case "4": {
-                        stayin = false;
-                        break;
-                    }
-                    default: {
-                        throw new IllegalArgumentException();
-                    }
+                case 1: {
+                    printPizzaMenu(arch);
+                    break;
                 }
-            } catch (IllegalArgumentException ex) {
-                System.out.println("Indtast en rigtig værdi");
+                case 2: {
+                    showPTM();
+                    break;
+                }
+                case 3: {
+                    CreateOrder();
+                    break;
+                }
+                case 4: {
+                    completeOrder();
+                    break;
+                }
+                case 5:
+                    stayin = false;
+                    break;
             }
+        }
+    }
+
+    public void printPizzaMenu(Archive arch) {
+        int index = 1;
+        for (String string : arch.readPizzaCSVList()) {
+            String[] pizzaDetaljer = string.split(",");
+            System.out.println(index + ". " + pizzaDetaljer[0] + ", Alm: " + pizzaDetaljer[1]
+                    + "kr, Deep pan: " + pizzaDetaljer[2] + "kr, Familie: "
+                    + pizzaDetaljer[3] + "kr");
+            index++;
         }
     }
 
@@ -125,13 +126,25 @@ public class Controller {
         System.out.println("1: fjern pizza fra arbejds liste. \n2: tilbage til hovedmenuen.");
         switch (ui.getNumMinMax(1, 2)) {
             case 1:
-                PTM.pizzaComplete(ui.getNumMinMax(1, 10));
-                showPTM();
+                if (PTM.size() == 1) {
+                    PTM.pizzaComplete();
+                } else {
+                    PTM.pizzaComplete(ui.getNumMinMax(1, 10));
+                    showPTM();
+                }
                 break;
             case 2:
                 return;
         }
 
+    }
+
+    public void completeOrder() {
+        System.out.println(OH);
+        System.out.println("Hvilken bestilling bliver afhentet? tryk 0 at komme tilbage.");
+        int input = ui.getNumMinMax(1, OH.size());
+        if(input != 0) OH.completeOrder(input);
+       
     }
 
 }

@@ -5,8 +5,9 @@
  */
 package presentation;
 
-import domain.Pizza;
-import java.util.ArrayList;
+import datasource.Archive;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.Scanner;
 
 /**
@@ -50,11 +51,17 @@ public class UI {
     }
 
     public int getNumMinMax(int min, int max) {
+        Archive archive = new Archive();
+
         int num = 0;
         try {
             num = Integer.parseInt(SC.nextLine());
-        } catch (NumberFormatException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println("Input skal være et heltal!");
+            StringWriter sw = new StringWriter();
+            e.printStackTrace(new PrintWriter(sw));
+            String exceptionAsString = sw.toString();
+            archive.writeLogger(exceptionAsString);
             getNumMinMax(min, max);
         }
         if (num < min || num > max) {
@@ -102,7 +109,7 @@ public class UI {
     public void getMenu() {
         stars();
         System.out.println("1. Vis menu\n2. Vis bestillinger\n3. Opret ordre\n"
-                + "4. Quit");
+                + "4. Odrer Afhentes\n" + "5. Quit");
     }
 
     public void stars() {
