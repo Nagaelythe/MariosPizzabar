@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.io.*;
 
 import java.nio.file.*;
+import java.util.Arrays;
+import java.util.List;
 
 /*readSmallTextToList
  * To change this license header, choose License Headers in Project Properties.
@@ -20,6 +22,8 @@ public class Archive {
     private final String filename = workingDir + "archive.bin";
     private final String menuPizzaFileName = System.getProperty("user.dir")
             + "/src/datasource/pizzaMenu.csv";
+    private final String logger = System.getProperty("user.dir")
+            + "/src/datasource/logger.txt";
     private final String customerFileName = workingDir + "customerFileName";
 //    private final String menuPizzaFileName = workingDir +"pizzaMenu.csv";
     private final File archive = new File(filename);
@@ -106,7 +110,20 @@ public class Archive {
             ex.printStackTrace();
         }
         return pizzaArrayList;
+    }
 
+    public void writeWithNio(String errorString) {
+        try {
+            Path path = Paths.get(logger);
+            String[] arr = new String[]{errorString};
+            List<String> list = Arrays.asList(arr);
+            Files.write(path, list);
+        } catch (IOException ex) {
+            if (DEBUG) {
+                ex.printStackTrace();
+            }
+
+        }
     }
 
 }
