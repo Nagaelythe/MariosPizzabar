@@ -23,6 +23,10 @@ public class Pizza {
         System.out.println("somethin");
         
     }
+    //overload
+    public Pizza(int Number){
+        // Find pizzaen ud fra menuen.
+    }
     
     public void addTopping(String topping){
         extraTopping.add(topping);

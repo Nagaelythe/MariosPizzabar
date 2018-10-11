@@ -5,40 +5,50 @@
  */
 package domain;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+import presentation.UI;
 
 /**
  *
  * @author Martin Wulff
  */
 public class Controller {
-    private Oven Oven = new Oven();
+
+    private Oven oven = new Oven();
     private final Scanner SC = new Scanner(System.in); // skal nok fjernes.
-    
-    
-    public void CreateOrder(){
+    private UI ui = new UI();
+
+    public void CreateOrder() {
         //Get UI Element from here.
-        Pizza P = new Pizza(ID,Name);  // evt implementer UI metoder til at få et ID og et navn, eller lav en Json string til det her?
-        // Check Database for Customer.
-        //else{
-        Customer C = new Customer(name, phone); // Evt UI Funktioner for at få disse oplysninger.
-        
-        
-        Oven.newOrder(P,C);
-    }
-    
+        Pizza P = new Pizza(ui.getNumMinMax(0, 15));  // evt implementer UI metoder til at få et ID og et navn, eller lav en Json string til det her?
 
-    
-    public static int getNumber() {
-        int num = 0;
-        try {
-            num = Integer.parseInt(SC.nextLine());
-        } catch (NumberFormatException e) {
-            System.out.println("Not a number!");
-            num = getNumber();
+        //Creating more pizzas:
+        ui.orderMore();
+        if (ui.getYN()) {
+            ArrayList<Pizza> Pz = new ArrayList<>();
+            P = new Pizza(ui.getNumMinMax(0, 15));
+            Pz.add(P);
+            ui.orderMore();
+            while (ui.getYN()) {
+                P = new Pizza(ui.getNumMinMax(0, 15));
+                Pz.add(P);
+                ui.orderMore();
+            }
+            Customer C = new Customer(ui.getName(), ui.getPhone());
+            Order O = new Order(Pz, C);
+
+        } else {
+            Customer C = new Customer(ui.getName(), ui.getPhone());
+            Order O = new Order(P, C);
+            ui.confirmOrder(O);
+            oven.newOrder(O);
         }
-        return num;
+
     }
 
-    
+    public void programMenu() {
+        
+    }
+
 }
