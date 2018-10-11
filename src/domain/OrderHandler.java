@@ -17,11 +17,11 @@ import java.util.ArrayList;
  * 
  * @author Martin Wulff
  */
-public class Oven{
+public class OrderHandler{
 
     private ArrayList<Order> Orders;
     
-    public Oven(){
+    public OrderHandler(){
         
     }
     

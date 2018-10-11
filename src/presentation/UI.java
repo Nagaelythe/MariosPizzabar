@@ -33,6 +33,7 @@ public class UI {
     public UI() {
 
     }
+    
     public void orderMore(){
         System.out.println("Bestiller kunden mere pizza? Y/N");
     }

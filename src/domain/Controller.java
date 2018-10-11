@@ -15,7 +15,7 @@ import presentation.UI;
  */
 public class Controller {
 
-    private Oven oven = new Oven();
+    private OrderHandler oven = new OrderHandler();
     private final Scanner SC = new Scanner(System.in); // skal nok fjernes.
     private UI ui = new UI();
 
